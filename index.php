@@ -20,7 +20,7 @@ $animals[] = 'Aligators';
 $ages = [
     'Yankel' => 45,
     'Shmerel' => 62,
-    'David'=> 12,
+    'David' => 12,
     'Pinchos' => 21
 ];
 $ages['Gedaliah'] = 76;
@@ -31,6 +31,6 @@ $tasks = [
     'toDo' => 'vacuum',
     'assignedTo' => 'נחום',
     'due by' => 'Thursday',
-    'isDone' => false,
+    'isDone' => false
 ];
 require 'views.php';
