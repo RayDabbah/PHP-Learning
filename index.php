@@ -1,4 +1,5 @@
 <?php
+require 'functions.php';
 $greet = 'Yankel Shmerelstein';
 $greeting = "Hello $greet!!!!";
 
