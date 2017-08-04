@@ -32,6 +32,9 @@ $tasks = [
     'toDo' => 'vacuum',
     'assignedTo' => 'נחום',
     'due by' => 'Thursday',
-    'isDone' => false
+    'isDone' => true,
+    'enjoyable' => true
 ];
+ageCheck(2);
+
 require 'views.php';
