@@ -43,8 +43,7 @@ $password = '123';
 try {
     $pdo = new PDO("mysql: host=$host;dbname=$dB",$user, $password);
 } catch (PDOException $e) {
-    var_dump($e);
-    die('Database error.');
+    die($e->getMessage());
 }
 $statement = $pdo->prepare('SELECT * FROM todos');
 $statement->execute();
