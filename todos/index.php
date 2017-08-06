@@ -38,12 +38,15 @@
 // // var_dump($tasks);
 $host = 'localhost';
 $dB = 'myPHP';
-$user = 'root';
-$password = '1';
+$user = 'rd';
+$password = '123';
 try {
     $pdo = new PDO("mysql: host=$host;dbname=$dB",$user, $password);
 } catch (PDOException $e) {
     var_dump($e);
     die('Database error.');
 }
-require 'index.view.php';
+$statement = $pdo->prepare('SELECT * FROM todos');
+$statement->execute();
+die(var_dump($statement->fetchAll(PDO::FETCH_OBJ)));
+// require 'index.view.php';
