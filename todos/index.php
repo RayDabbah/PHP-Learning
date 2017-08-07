@@ -1,4 +1,5 @@
 <?php
+require 'Task.php';
 // class ToDos
 // {
 
@@ -47,5 +48,5 @@ try {
 }
 $statement = $pdo->prepare('SELECT * FROM todos');
 $statement->execute();
-die(var_dump($statement->fetchAll(PDO::FETCH_OBJ)));
-// require 'index.view.php';
+$tasks = $statement->fetchAll(PDO::FETCH_CLASS, 'Task');
+require 'index.view.php';
