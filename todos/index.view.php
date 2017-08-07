@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
     *{
-        background-color: #73e866;
+        background-color: #e2ade8;
         font-family: sans-serif, helvetica;
     }
     h1{
@@ -28,7 +28,7 @@
         background-color: inherit;
     }
     .linethrough{
-        color: rgb(34, 121, 2);
+        color: #2a15b4;
         background-color: inherit;
         text-decoration: line-through;
     }
