@@ -1,14 +1,7 @@
 <?php
 require 'Task.php';
-// class ToDos
-// {
+require 'functions.php';
 
-//     public $description;
-//     public $completed = false;
-//     public function __construct($description)
-//     {
-//         $this->description = $description;
-//     }
 //     public function isComplete()
 //     {
 //         // don't know why you would need return here.
@@ -37,16 +30,6 @@ require 'Task.php';
 // $tasks[0]->complete();
 // $tasks[2]->isComplete();
 // // var_dump($tasks);
-$host = 'localhost';
-$dB = 'myPHP';
-$user = 'rd';
-$password = '123';
-try {
-    $pdo = new PDO("mysql: host=$host;dbname=$dB",$user, $password);
-} catch (PDOException $e) {
-    die($e->getMessage());
-}
-$statement = $pdo->prepare('SELECT * FROM todos');
-$statement->execute();
-$tasks = $statement->fetchAll(PDO::FETCH_CLASS, 'Task');
-require 'index.view.php';
+
+$tasks = fetchAllData($pdo, 'todos', 'Task');
+    require 'index.view.php';

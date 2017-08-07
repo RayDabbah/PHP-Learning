@@ -28,6 +28,7 @@
         background-color: inherit;
     }
     .linethrough{
+        color: rgb(34, 121, 2);
         background-color: inherit;
         text-decoration: line-through;
     }
