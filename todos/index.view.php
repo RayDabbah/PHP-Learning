@@ -27,8 +27,13 @@
         margin: 0 auto;
         background-color: inherit;
     }
-    strike{
+    .linethrough{
         background-color: inherit;
+        text-decoration: line-through;
+    }
+    .crossedout{
+        background-color: inherit;
+        color: #605555;
     }
     i{
         color: #ec3866;
@@ -47,7 +52,7 @@
             echo "<li>  $todo->description</li>";
         }
         else {
-            echo "<li><strike>  $todo->description</strike></li>";
+            echo "<li class=\"linethrough\"><span class=\"crossedout\">  $todo->description</span></li>";
         }
     }
         ?>
