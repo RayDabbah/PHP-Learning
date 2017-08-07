@@ -13,20 +13,18 @@
         text-align: center;
     }
     ul{
+        font-size: 2em;
         border-radius: 3%;
         padding: 2em;
-        width: 20%;
+        width: 30%;
         background-color: white;
         margin: 0 auto;
-        margin-top: 10em;
+        margin-top: 3em;
         box-shadow: 5px 5px 5px grey;
     }
     li{
-        padding: 6px;
+        padding: 10px;
         margin: 0 auto;
-        /* margin-left: 40%; */
-        /* margin-right: 45%; */
-        /* text-align: center; */
         background-color: inherit;
     }
     strike{
