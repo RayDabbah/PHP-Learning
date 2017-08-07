@@ -8,7 +8,7 @@ function connect(){
 }
 }
 
-function fetchAllData($pdo, $table, $string)
+function fetchAllData($table, $string)
 {
     $pdo = connect();
     $statement = $pdo->prepare("SELECT * FROM $table");

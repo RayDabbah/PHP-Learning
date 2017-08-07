@@ -31,5 +31,6 @@ require 'functions.php';
 // $tasks[2]->isComplete();
 // // var_dump($tasks);
 
-$tasks = fetchAllData($pdo, 'todos', 'Task');
+$tasks = fetchAllData('todos', 'Task');
+$users = fetchAllData('users', 'User');
     require 'index.view.php';
