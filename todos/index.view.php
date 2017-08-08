@@ -22,6 +22,7 @@
         background-color: white;
         margin: 0 auto;
         margin-top: 3em;
+        margin-bottom: 3em;
         box-shadow: 5px 5px 5px grey;
     }
     li{
@@ -65,7 +66,7 @@
     }
     ?>
        
-    
+            
     
  </ul>   
  <ul class="userlist">
