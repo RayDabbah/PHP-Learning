@@ -6,38 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="php.css">
-    <title>To Do Items </title>
+    <title>Contact Us</title>
 </head>
 <body>
-    <nav>
+  <nav>
         <a href="/">Home</a>
         <a href="about.php">About Us</a>
         <a href="contact.php">Contact Us!</a>
     </nav>
- <ul>
-     
-    <?php foreach ($tasks as $todo) {
-        if (!$todo->completed) {
-            echo "<li>   $todo->description</li>";
-        }
-        else {
-            echo "<li class=\"linethrough\"><span class=\"crossedout\">   $todo->description</span></li>";
-        }
-    }
-    ?>
-       
-            
-    
- </ul>   
- <ul class="userlist">
-     
-    <?php foreach ($users as $user) : ?>
-       <li><?= "$user->username can be reached at <br>  $user->email"; ?></li>
-    
-       <?php endforeach; ?>
-       
-    
-    
- </ul>   
+  <h1>Contact Us!</h1>  
 </body>
 </html>

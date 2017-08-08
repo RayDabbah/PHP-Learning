@@ -9,11 +9,12 @@ class Connector
             $dbConfig['name'],
              $dbConfig['password'],
              $dbConfig['options']);
-        } catch (PDOException $e) {
-            var_dump($dbConfig['host']);
-            echo $dbconfig['host']/* .$dbConfig['dbName'], 
-            $dbConfig['name'],
-             $dbConfig['password'] */;
+        } catch (PDOException $e) { 
+            print_r($dbConfig);
+            // echo 
+            // $dbconfig['host'], $dbConfig['dbName'], 
+            // $dbConfig['name'],
+            //  $dbConfig['password'];
             die($e->getMessage());
         }
     }
