@@ -1,5 +1,5 @@
 <?php
-class Connecter
+class Connector
 {
     public static function connect()
     {

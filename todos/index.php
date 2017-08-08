@@ -1,11 +1,8 @@
 <?php
-require 'database/QueryBuilder.php';
-require 'database/Connecter.php';
-require 'Task.php';
-require 'User.php';
- $pdo =  Connecter::connect();
-$taskQuery = new Query($pdo);
- $tasks = $taskQuery->selectAll('todos', 'Task');
-$userQuery = new Query($pdo);
-$users = $userQuery->selectAll('users', 'User');
+$Query = require 'bootstrap.php';
+
+$tasks = $Query->selectAll('todos', 'Task');
+
+$users = $Query->selectAll('users', 'User');
+// die(var_dump($users));
 require 'index.view.php';
