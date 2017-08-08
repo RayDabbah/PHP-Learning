@@ -1,15 +1,19 @@
 <?php
-require 'config.php';
-$host; $dbName; $name; $password;
 
 class Connector
 {
-    public static function connect()
+    public static function connect($dbConfig)
     {
         try {
-            // return $pdo = new PDO('mysql:host=localhost;dbname=myPHP', 'rd', '123');
-            return $pdo = new PDO($host . $dbName, $name, $password);
+            return new PDO('mysql:host=localhost;'.$dbConfig['dbName'], 
+            $dbConfig['name'],
+             $dbConfig['password'],
+             $dbConfig['options']);
         } catch (PDOException $e) {
+            var_dump($dbConfig['host']);
+            echo $dbconfig['host']/* .$dbConfig['dbName'], 
+            $dbConfig['name'],
+             $dbConfig['password'] */;
             die($e->getMessage());
         }
     }
