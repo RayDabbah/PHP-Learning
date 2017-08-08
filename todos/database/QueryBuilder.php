@@ -12,4 +12,9 @@ class Query
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_CLASS, $class);
     }
+    public function delete($table, $id)
+    {
+        $statement = $this->pdo->prepare("DELETE FROM $table WHERE id=$id");
+        $statement->execute();
+    }
 }
