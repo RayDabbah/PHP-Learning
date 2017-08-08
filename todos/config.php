@@ -5,6 +5,8 @@ return [
         'dbName' => 'dbname=myPHP',
         'name' => 'rd',
         'password' => '123',
-        'options' => []
+        'options' => [
+            PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION
+        ]
     ]
 ];
