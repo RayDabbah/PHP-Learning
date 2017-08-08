@@ -2,6 +2,7 @@
         box-sizing: border-box;
         background-color: #e2ade8;
         font-family: sans-serif, helvetica;
+        margin: 0;
     }
     h1{
         text-align: center;
@@ -16,6 +17,26 @@
         margin-top: 3em;
         margin-bottom: 3em;
         box-shadow: 5px 5px 5px grey;
+    }
+   h1{
+       margin-top:2em;
+   }
+    nav{
+        width: 100%;
+        background: repeating-radial-gradient( rgba(242, 159, 243, 0.3), rgba(184, 161, 204, 0.8), rgb(209, 87, 225) );
+        height: 50px;
+    }
+    nav>a:hover{
+        background: rgba(197, 140, 214, 0.67);
+    }
+    nav>a{
+        display: inline-block;
+        position: relative;
+        height: 100%;
+        background: transparent;
+        padding: 5px;
+        text-decoration: none;
+        font-size: 1.5em;
     }
     li{
         padding: 10px;
