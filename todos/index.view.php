@@ -11,8 +11,8 @@
 <body>
     <nav>
         <a href="/">Home</a>
-        <a href="about.php">About Us</a>
-        <a href="contact.php">Contact Us!</a>
+        <a class="right" href="about.php">About Us</a>
+        <a class="right" href="contact.php">Contact Us!</a>
     </nav>
  <ul>
      

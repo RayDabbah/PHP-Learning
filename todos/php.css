@@ -1,13 +1,22 @@
-*{
+    *{
         box-sizing: border-box;
-        background-color: #e2ade8;
         font-family: sans-serif, helvetica;
+    }
+    html{
+        /*2 ways to extend grdient to the whole page; either min-height on the html or
+        background-attachment: fixed. Difference is that with fixed the background  won't move if you
+        have a page that can scroll.  */
+          min-height: 100%;  
+    }
+body{
+        background: linear-gradient(45deg, rgba(242, 159, 243, 0.3), rgba(184, 161, 204, 0.8), #7cba84 ); 
         margin: 0;
+        /* background-attachment: fixed;   */
     }
     h1{
         text-align: center;
     }
-    ul{
+     ul{
         font-size: 2em;
         border-radius: 3%;
         padding: 2em;
@@ -22,34 +31,41 @@
        margin-top:2em;
    }
     nav{
+        background-color: #5e3574;
         width: 100%;
-        background: repeating-radial-gradient( rgba(242, 159, 243, 0.3), rgba(184, 161, 204, 0.8), rgb(209, 87, 225) );
         height: 50px;
+    }
+    nav>a:active{
+        color: green;
     }
     nav>a:hover{
         background: rgba(197, 140, 214, 0.67);
     }
     nav>a{
+        color: white;
         display: inline-block;
         position: relative;
         height: 100%;
         background: transparent;
-        padding: 5px;
+        padding: 11px;
         text-decoration: none;
         font-size: 1.5em;
+    }
+    .right{
+        float: right;
     }
     li{
         padding: 10px;
         margin: 0 auto;
-        background-color: inherit;
+        background-color: white;
     }
     .linethrough{
         color: #2a15b4;
-        background-color: inherit;
+        background-color: transparent;
         text-decoration: line-through;
     }
     .crossedout{
-        background-color: inherit;
+        background-color: transparent;
         color: #605555;
     }
     i{
