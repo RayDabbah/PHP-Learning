@@ -11,8 +11,9 @@
 <body>
   <nav>
         <a href="/">Home</a>
-        <a class="right" href="about.php">About Us</a>
-        <a class="right" href="contact.php">Contact Us!</a>
+        <a class="right" href="about/culture">Culture</a>
+        <a class="right" href="about">About Us</a>
+        <a class="right" href="contact">Contact Us!</a>
     </nav>
   <h1>Contact Us!</h1>  
 </body>

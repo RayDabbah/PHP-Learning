@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="php.css">
-    <title>About</title>
+    <link rel="stylesheet" href="../php.css">
+    <title>Culture</title>
 </head>
 <body>
   <nav>
-        <a href="/">Home</a>
-        <a class="right" href="about.php">About Us</a>
-        <a class="right" href="contact.php">Contact Us!</a>
+        <a href="../">Home</a>
+        <a class="right" href="culture">Culture</a>
+        <a class="right" href="../about">About Us</a>
+        <a class="right" href="../contact">Contact Us!</a>
     </nav>
-  <h1>All About Us!</h1>  
+  <h1>Culture</h1>  
 </body>
 </html>
