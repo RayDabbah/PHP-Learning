@@ -1,5 +1,5 @@
 <?php
-$Query = require 'core/bootstrap.php';
+require 'core/bootstrap.php';
 
 // $router = new Router;
 // die(var_dump($_SERVER));
