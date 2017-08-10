@@ -5,15 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../php.css">
-    <title>Culture</title>
+    <link rel="stylesheet" href="php.css">
+    <title>To Do Items </title>
 </head>
 <body>
-  <nav>
-        <a href="../">Home</a>
-        <a class="right" href="culture">Culture</a>
-        <a class="right" href="../about">About Us</a>
-        <a class="right" href="../contact">Contact Us!</a>
+    <nav>
+        <a href="/">Home</a>
+        <a class="right" href="about/culture">Culture</a>
+        <a class="right" href="about">About Us</a>
+        <a class="right" href="contact">Contact Us!</a>
     </nav>
-  <h1>Culture</h1>  
-<?php include 'partials/footer.php'?>
