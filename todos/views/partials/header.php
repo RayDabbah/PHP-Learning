@@ -9,6 +9,8 @@
     <title>To Do Items </title>
 </head>
 <body>
+    <div id="wrapper">
+    <div id="content">
     <nav>
         <a href="/">Home</a>
         <a class="right" href="about/culture">Culture</a>
