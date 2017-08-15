@@ -47,6 +47,7 @@ body{
         margin-top: 3em;
         margin-bottom: 3em;
         box-shadow: 5px 5px 5px grey;
+        overflow: hidden;
     }
     input{
         display: block;
@@ -128,9 +129,3 @@ body{
     #todoList li:hover{
         background-color: #e8f3e5;
     }
-    #todoList li:hover:first-child{
-        border-radius: 3% 3% 0% 0%;
-    }
-    #todoList li:hover:last-child{
-        border-radius: 0% 0% 5% 5%;
-            }
