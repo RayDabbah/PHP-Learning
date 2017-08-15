@@ -17,4 +17,9 @@ class Query
         $statement = $this->pdo->prepare("DELETE FROM $table WHERE id=$id");
         $statement->execute();
     }
+    public function addUser($table, $username, $email, $password)
+    {
+        $statement = $this->pdo->prepare("INSERT INTO $table (`username`, `email`, `password`) VALUES ('$username', '$email', '$password');");
+        $statement->execute();
+    }
 }

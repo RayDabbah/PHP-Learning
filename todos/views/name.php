@@ -1,6 +1,6 @@
 <?php include 'partials/header.php' ?>
 
-<h1><?= "Welcome $_POST[name]!" ?></h1>
+<h1><?= 'Welcome ' . ucwords($_POST[username]).'!' ?></h1>
 
 
 

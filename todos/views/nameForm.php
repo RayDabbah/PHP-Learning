@@ -1,12 +1,13 @@
 <?php include 'partials/header.php'?>
-<h1>
-<?php if($_POST): ?>
-<?= "Hello $_POST[name]!"; ?>
-<?php else : ?>
-<?= 'Enter your name.'; endif?>
-</h1>
+
+<h1>Enter your name.</h1>
 <form action="/name"  method="POST">
-<input type="text" name="name"><br>
+<label for="username">Name:</label>
+<input id="username" type="text" name="username"><br>
+<label for="email">Email: </label>
+<input id="email" type="email" name="email"><br>
+<label for="password">Password: </label>
+<input id="password" type="password" name="password"><br>
 <input type="submit">
 </form>
 
