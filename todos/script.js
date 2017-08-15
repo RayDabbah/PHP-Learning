@@ -8,3 +8,6 @@ for (let i = 0; i <= todoSpan.length; i++) {
         todoLi[i].classList.toggle('incompleteTodo');
     }, false);
 }
+Array.from(document.querySelectorAll('delete')).forEach(function(delete){
+    delete.addEventListener('click', e=> e.stopPropagation());
+});
