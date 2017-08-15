@@ -1,9 +1,9 @@
 <?php include 'partials/header.php'?>
- <ul>
+ <ul id="todoList">
      
     <?php foreach ($tasks as $todo) {
         if (!$todo->completed) {
-            echo "<li>   $todo->description</li>";
+            echo "<li class=\"incompleteTodo\"><span>   $todo->description</span></li>";
         }
         else {
             echo "<li class=\"linethrough\"><span class=\"crossedout\">   $todo->description</span></li>";
@@ -24,5 +24,6 @@
     
     
  </ul>   
- 
+ <script src="script.js"></script>
+     
 <?php include 'partials/footer.php'?>
