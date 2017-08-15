@@ -3,7 +3,7 @@
      
     <?php foreach ($tasks as $todo) {
         if (!$todo->completed) {
-                echo "<li class=\"incompleteTodo\"><img class=\"delete\"> src=\"delete-basket.png\"><span>   $todo->description</span></li>";
+                echo "<li class=\"incompleteTodo\"><img class=\"delete\" src=\"delete-basket.png\"><span>   $todo->description</span></li>";
         }
         else {
                 echo "<li class=\"linethrough\"><img class=\"delete\" src=\"delete-basket.png\"><span class=\"crossedout\">   $todo->description</span></li>";

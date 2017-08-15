@@ -120,3 +120,6 @@ body{
     #todoList li{
         cursor: pointer;
     }
+    #todoList li:hover{
+        background-color: #ddd;
+    }
