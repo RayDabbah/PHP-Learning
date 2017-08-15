@@ -1,6 +1,6 @@
 var todoSpan = document.querySelectorAll('#todoList span');
 var todoLi = (document.querySelectorAll('#todoList li'));
-for (let i = 0; i <= todoSpan.length; i++) {
+for (let i = 0; i <= todoSpan.length - 1; i++) {
     todoLi[i].addEventListener('click', function (e) {
         e.stopPropagation();
         todoSpan[i].classList.toggle('crossedout');
