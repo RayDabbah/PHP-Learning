@@ -5,4 +5,4 @@
     $router->getReq('contact' , 'controllers/contact.php');
     $router->getReq('' , 'controllers/index.php');
     $router->getReq('form' , 'controllers/form.php');
-    $router->postReq('name' , 'controllers/form.php');
+    $router->postReq('name' , 'controllers/name.php');
