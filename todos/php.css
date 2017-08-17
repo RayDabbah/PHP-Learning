@@ -23,6 +23,11 @@ body {
   margin: 0;
   background-attachment: fixed;
 }
+label{
+    display: block;
+    margin: 0 auto;
+    width: 25%;
+}
 #wrapper {
   position: relative;
   min-height: 100%;
@@ -60,7 +65,6 @@ input {
   margin: 0 auto;
   border-radius: 3%;
   background-color: white;
-  margin-top: 3em;
   box-shadow: 5px 5px 5px grey;
   width: 25%;
   padding: 1em;
