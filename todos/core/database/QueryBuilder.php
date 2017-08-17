@@ -22,4 +22,9 @@ class Query
         $statement = $this->pdo->prepare("INSERT INTO $table (`username`, `email`, `password`) VALUES ('$username', '$email', '$password');");
         $statement->execute();
     }
+    public function addTask($table, $description, $completed)
+    {
+        $statement = $this->pdo->prepare("INSERT INTO $table (`description`, `completed`) VALUES ('$description', '$completed');");
+        $statement->execute();
+    }
 }

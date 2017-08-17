@@ -6,3 +6,4 @@
     $router->getReq('' , 'controllers/index.php');
     $router->getReq('form' , 'controllers/form.php');
     $router->postReq('name' , 'controllers/name.php');
+    $router->postReq('task' , 'controllers/task.php');
