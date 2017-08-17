@@ -13,3 +13,10 @@ for (let i = 0; i <= todoSpan.length - 1; i++) {
         todoLi[i].classList.toggle('incompleteTodo');
     }, false);
 }
+Array.from(document.getElementsByClassName('delete')).forEach(trashCan =>{
+    trashCan.addEventListener('click', ()=>{
+        console.log('you clicked on me');
+        trashCan.classList.add('erase');
+        setTimeout(()=> trashCan.classList.remove('erase'),500);
+    })
+});
