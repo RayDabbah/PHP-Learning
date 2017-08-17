@@ -3,10 +3,10 @@
      
     <?php foreach ($tasks as $todo) {
                 if (!$todo->completed) {
-                        echo "<li class=\"incompleteTodo\"><img class=\"delete\" src=\"delete-basket.png\"><span>      $todo->description</span></li>";
+                        echo "<li class=\"incompleteTodo\"><img class=\"delete\" src=\"delete-basket.png\"><span>       $todo->description</span></li>";
                 }
                 else {
-                        echo "<li class=\"linethrough\"><img class=\"delete\" src=\"delete-basket.png\"><span class=\"crossedout\">      $todo->description</span></li>";
+                        echo "<li class=\"linethrough\"><img class=\"delete\" src=\"delete-basket.png\"><span class=\"crossedout\">       $todo->description</span></li>";
                 }
         }
         ?>
@@ -14,7 +14,7 @@
             
     
  </ul>   
- <form action="/task" method="POST">
+ <form id="todoForm" action="/task" method="POST">
  <h1>
  Enter your new Todo Item here: <br>
  </h1>
