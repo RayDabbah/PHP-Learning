@@ -25,7 +25,7 @@
  <input type="radio" id="false" name="completed" value="0" checked="checked"><br>
  <label class="radioLabel" for="true">Yes </label>
  <input type="radio" id="true" name="completed" value="1"><br>
- <input type="submit" value="Add your Todo!">
+ <input type="submit" id="submit" value="Add your Todo!">
  </form>
  <script src="script.js"></script>
 <?php include 'partials/footer.php' ?>

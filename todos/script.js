@@ -23,8 +23,12 @@ Array.from(document.getElementsByClassName("delete")).forEach(trashCan => {
     setTimeout(() => trashCan.classList.remove("erase"), 500);
   });
 });
-document.getElementById("todoForm").addEventListener("submit", e => {
+const submit = document.getElementById('submit');
+submit.disabled = true;
+document.getElementById("todoForm").addEventListener("input", () => {
   if (!document.getElementById("desc").value) {
-    e.preventDefault();
+   submit.disabled= true;
+  }else{
+submit.disabled = false;
   }
 });
