@@ -67,8 +67,8 @@ ul, form {
   overflow: hidden;
 }
 #todoForm{
-  background-color: transparent;
-  box-shadow: none;
+  background-color: rgba(173, 44, 149, 0.11);
+  box-shadow: 5px 5px 5px grey;
 }
 input {
   display: block;
@@ -76,8 +76,8 @@ input {
   border-radius: 3%;
   background-color: white;
   box-shadow: 5px 5px 5px grey;
-  /* width: 25%; */
   padding: 1em;
+  width: 80%;
 }
 
 input[type='radio']{
@@ -87,7 +87,7 @@ input[type='radio']{
 }
 h1 {
   font-size: .8em;
-  /* margin-top: 2em; */
+  color: #044584;
 }
 nav {
   background-color: #5e3574;
