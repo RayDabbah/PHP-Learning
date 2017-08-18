@@ -12,6 +12,7 @@ class ComposerStaticInitcfd41cb2202dc06437d673ab0bf7917c
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
         'Composer\\Autoload\\ComposerStaticInitcfd41cb2202dc06437d673ab0bf7917c' => __DIR__ . '/..' . '/composer/autoload_static.php',
         'Connector' => __DIR__ . '/../..' . '/core/database/Connector.php',
+        'PageController' => __DIR__ . '/../..' . '/controllers/PageController.php',
         'Query' => __DIR__ . '/../..' . '/core/database/QueryBuilder.php',
         'Router' => __DIR__ . '/../..' . '/core/Router.php',
         'Task' => __DIR__ . '/../..' . '/core/Task.php',

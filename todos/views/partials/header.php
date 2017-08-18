@@ -14,7 +14,6 @@
     <nav>
         <a href="/">Home</a>
         <a class="right" href="form">Signup</a>
-        <a class="right" href="about/culture">Culture</a>
         <a class="right" href="about">About Us</a>
         <a class="right" href="contact">Contact Us!</a>
     </nav>

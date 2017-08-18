@@ -24,11 +24,12 @@ Array.from(document.getElementsByClassName("delete")).forEach(trashCan => {
   });
 });
 const submit = document.getElementById('submit');
-submit.disabled = true;
+var todoField = document.getElementById("desc");
+if (!todoField.value) submit.disabled = true;
 document.getElementById("todoForm").addEventListener("input", () => {
-  if (!document.getElementById("desc").value) {
-   submit.disabled= true;
-  }else{
-submit.disabled = false;
+  if (!todoField.value) {
+    submit.disabled = true;
+  } else {
+    submit.disabled = false;
   }
 });
