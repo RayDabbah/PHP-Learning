@@ -73,12 +73,14 @@ ul, form {
 input {
   display: block;
   margin: 0 auto;
-  border-radius: 5%;
-  background-color: white;
+  border-radius: 25px;
+  background-color: #ddd;
   box-shadow: 5px 5px 5px grey;
   padding: 1em;
   width: 80%;
   font-size: 1em;
+  outline: none;
+  /* background-color: plum; */
 }
 
 input[type='radio']{

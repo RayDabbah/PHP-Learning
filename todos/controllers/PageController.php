@@ -6,7 +6,7 @@ class PageController
     {
         $tasks = App::get('database')->selectAll('todos', 'Task');
 
-         views('index.view', ['tasks'=>$tasks]);
+         views('index.view', compact('tasks'));
     }
 
     public function about()
@@ -18,11 +18,15 @@ class PageController
          views('nameForm');
 
     }
+    public function names()
+    {
+        $users = App::get('database')->selectAll('users', 'User');
+         views('names', ['users'=> $users]);
+    }
     public function name()
     {
         App::get('database')->addUser('users', $_POST[username], $_POST[email], $_POST[password]);
-        $users = App::get('database')->selectAll('users', 'User');
-         views('name', ['users'=> $users]);
+        header('Location: /names');
     }
     public function contact()
     {

@@ -4,5 +4,6 @@
     $router->getReq('contact' , 'PageController@contact');
     $router->getReq('' , 'PageController@home');
     $router->getReq('form' , 'PageController@form');
+    $router->getReq('names' , 'PageController@names');
     $router->postReq('name' , 'PageController@name');
     $router->postReq('task' , 'PageController@task');
