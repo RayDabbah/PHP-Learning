@@ -6,27 +6,27 @@ class PageController
     {
         $tasks = App::get('database')->selectAll('todos', 'Task');
 
-        require 'views/index.view.php';
+         views('index.view', ['tasks'=>$tasks]);
     }
 
     public function about()
     {
-        require 'views/about.php';
+         views('about');
     }
     public function form()
     {
-        require 'views/nameForm.php';
+         views('nameForm');
 
     }
     public function name()
     {
         App::get('database')->addUser('users', $_POST[username], $_POST[email], $_POST[password]);
         $users = App::get('database')->selectAll('users', 'User');
-        require 'views/name.php';
+         views('name', ['users'=> $users]);
     }
     public function contact()
     {
-        require 'views/contact.php';
+         views('contact');
     }
     public function task()
     {
