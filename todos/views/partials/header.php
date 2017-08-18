@@ -13,6 +13,7 @@
     <div id="content">
     <nav>
         <a href="/">Home</a>
+        <a href="/names">Meet other users!</a>
         <a class="right" href="form">Signup</a>
         <a class="right" href="about">About Us</a>
         <a class="right" href="contact">Contact Us!</a>
