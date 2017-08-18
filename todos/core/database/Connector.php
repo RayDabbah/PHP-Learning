@@ -11,10 +11,6 @@ class Connector
              $dbConfig['options']);
         } catch (PDOException $e) { 
             print_r($dbConfig);
-            // echo 
-            // $dbconfig['host'], $dbConfig['dbName'], 
-            // $dbConfig['name'],
-            //  $dbConfig['password'];
             die($e->getMessage());
         }
     }

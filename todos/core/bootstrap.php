@@ -1,5 +1,11 @@
 <?php
-$app =[];
-$app['config'] = require 'config.php';
-$app['database'] = new Query(
-    Connector::connect($app['config']['db']));
+// $app = [];
+// $app['config'] = require 'config.php';
+// $app['database'] =;
+
+
+App::bind('config', require 'config.php');
+// die(var_dump(App::get('config')['db']));
+App::bind('database', new Query(
+    Connector::connect(App::get('config')['db'])
+));
