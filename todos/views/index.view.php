@@ -1,12 +1,13 @@
 <?php include 'partials/header.php' ?>
+<div class="flex">
  <ul id="todoList">
      
     <?php foreach ($tasks as $todo) {
                 if (!$todo->completed) {
-                        echo "<li class=\"incompleteTodo\"><img class=\"delete\" src=\"delete-basket.png\"><span>       $todo->description</span></li>";
+                        echo "<li class=\"incompleteTodo\"><img class=\"delete\" src=\"delete-basket.png\"><span>        $todo->description</span></li>";
                 }
                 else {
-                        echo "<li class=\"linethrough\"><img class=\"delete\" src=\"delete-basket.png\"><span class=\"crossedout\">       $todo->description</span></li>";
+                        echo "<li class=\"linethrough\"><img class=\"delete\" src=\"delete-basket.png\"><span class=\"crossedout\">        $todo->description</span></li>";
                 }
         }
         ?>
@@ -27,5 +28,6 @@
  <input type="radio" id="true" name="completed" value="1"><br>
  <input type="submit" id="submit" value="Add your Todo!">
  </form>
+</div>
  <script src="script.js"></script>
 <?php include 'partials/footer.php' ?>
