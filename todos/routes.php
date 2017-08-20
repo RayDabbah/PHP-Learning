@@ -7,3 +7,4 @@
     $router->getReq('names' , 'PageController@names');
     $router->postReq('name' , 'PageController@name');
     $router->postReq('task' , 'PageController@task');
+    $router->postReq('delete' , 'PageController@delete');

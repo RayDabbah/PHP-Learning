@@ -37,4 +37,9 @@ class PageController
         App::get('database')->addTask('todos', $_POST['description'], $_POST['completed']);
         header('Location: /');
     }
+    public function delete(){
+        App::get('database')->delete('todos', $_POST['id']);
+        // die(var_dump($_POST));
+        header('Location: /');
+    }
 }

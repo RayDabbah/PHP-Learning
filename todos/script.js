@@ -26,10 +26,23 @@ Array.from(document.getElementsByClassName("delete")).forEach(trashCan => {
 const submit = document.getElementById('submit');
 var todoField = document.getElementById("desc");
 if (!todoField.value) submit.disabled = true;
-document.getElementById("todoForm").addEventListener("input", () => {
+todoField.addEventListener("input", () => {
   if (!todoField.value) {
     submit.disabled = true;
   } else {
     submit.disabled = false;
   }
 });
+var deleteTodo = document.getElementsByClassName('deleteTodo');
+var deleteGarbage = document.getElementsByClassName('delete');
+console.log(deleteGarbage);
+console.log(deleteTodo);
+for (let i = 0; i < deleteTodo.length; i++) {
+  deleteGarbage[i].addEventListener('click', (e) => {
+    console.log(e.target);
+    setTimeout(()=>{
+      deleteTodo[i].submit();
+    },800);
+  })
+}
+
