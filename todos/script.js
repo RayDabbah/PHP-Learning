@@ -35,14 +35,11 @@ todoField.addEventListener("input", () => {
 });
 var deleteTodo = document.getElementsByClassName('deleteTodo');
 var deleteGarbage = document.getElementsByClassName('delete');
-console.log(deleteGarbage);
-console.log(deleteTodo);
 for (let i = 0; i < deleteTodo.length; i++) {
   deleteGarbage[i].addEventListener('click', (e) => {
-    console.log(e.target);
     setTimeout(()=>{
       deleteTodo[i].submit();
-    },800);
+    },400);
   })
 }
 

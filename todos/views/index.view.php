@@ -1,18 +1,18 @@
 <?php include 'partials/header.php' ?>
 <div class="flex">
  <ul id="todoList">
-    <?php foreach ($tasks as $todo)  : ?>
+    <?php foreach ($tasks as $todo) : ?>
     <form class="deleteTodo" action="/delete" method="POST">
-             <?php   if (!$todo->completed) {
-                        echo "<li class=\"incompleteTodo\"><img class=\"delete\" src=\"delete-basket.png\"><span>         $todo->description</span></li>";
-                }
-                else {
-                        echo "<li class=\"linethrough\"><img class=\"delete\" src=\"delete-basket.png\"><span class=\"crossedout\">         $todo->description</span></li>";
-                }
-                echo "<input type=\"hidden\" name=\"id\" value=\" $todo->id\">";
-                echo '</form>';
-                ?>
-                <?php endforeach ?>
+             <?php if (!$todo->completed) : ?>
+                       <li class="incompleteTodo"><img class="delete" src="delete-basket.png"><span> <?= $todo->description ?></span></li>
+                
+              <?php  else : ?>
+                        <li class="linethrough"><img class="delete" src="delete-basket.png"><span class="crossedout"><?= $todo->description ?></span></li>
+                
+        <?php endif; ?>
+              <input type="hidden" name="id" value=" <?=$todo->id ?>">
+                </form>
+        <?php endforeach; ?>
         
        
             
