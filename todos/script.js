@@ -20,7 +20,7 @@ for (let i = 0; i <= todoSpan.length - 1; i++) {
 Array.from(document.getElementsByClassName("delete")).forEach(trashCan => {
   trashCan.addEventListener("click", () => {
     trashCan.classList.add("erase");
-    setTimeout(() => trashCan.classList.remove("erase"), 500);
+    setTimeout(() => trashCan.classList.remove("erase"), 1500);
   });
 });
 const submit = document.getElementById('submit');
