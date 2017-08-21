@@ -52,16 +52,20 @@ footer {
   height: 35px;
 }
 ul {
-  font-size: 2em;
+  font-size: 1.7em;
   border-radius: 3%;
   padding: 0;
   width: 45%;
   background-color: white;
-  margin: 0 auto;
-  margin-top: 3em;
-  margin-bottom: 3em;
+  /* margin: 0 auto; */
+  /* margin: 2em; */
   box-shadow: 5px 5px 5px grey;
   overflow: hidden;
+}
+.flex{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 input {
   display: block;
@@ -69,11 +73,12 @@ input {
   border-radius: 3%;
   background-color: white;
   box-shadow: 5px 5px 5px grey;
-  width: 25%;
+  width: 85%;
   padding: 1em;
+  font-size: 1.3em;
 }
 input[type='submit'] {
-  width: 15%;
+  width: 65%;
 }
 input[type='radio']{
     width: inherit;
@@ -108,7 +113,7 @@ nav > a {
 }
 li {
   padding: 10px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   background-color: white;
 }
 .linethrough {
@@ -130,6 +135,17 @@ i {
   text-align: center;
   list-style: inside lower-roman
     url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAABRFBMVEX///93Skr+9o9uPj778nSEXFyYd3dpODhmMzMHBwbn39fDlT39+LwcHBtqOAf89ZVbW1pfXDTGmUR0cUCkn1p7dkNZVjFLSClkYTbmz2HcwY3w5M29iCLm0GfVsEPfxpeakEuDTQ4nJiC3sl6cl1NpTDyUY0SlgVWdeyVbWlOall+FglvQrWqXbBIZFw3sx5LFv2Wjk2Pbu3+2fhvJn1OLZxW+iyn06bX798rv4afVs2Ds3L/n0oX06tnn07DOp1TfoZrsxp399qHQqT/z2pTw0ZTz5YL99qry1qz03Kv67qzmtZx/VCmqjnJxQiF0Rz+AVT6gaBalck6UYkR6Rx5sOye+qZOkhWfbz8OQbEmDWTGVcmDv6uWliIChgnhfOS3Vsjy/n4CFf3+mpp1TNBWenYOYlJFmMxTNp37MoCr253i9kHUbzisZAAABSUlEQVQokV3R6z/CUBgH8FlDNp6YkDpEkVtCJrqzVgvrgi22olxD//97Z5fTyvfF2dnz+zzPzueMomxsSzcUQ689UWM6NQVAxUB9ZEfqrA5q++UZaxtguE0dHZpTRBOMYU8L6pOuOtTIIAUaE46GBgAKSxo0jwOX1Yf7u6wd6KBNW7x9UGODZA4F7UABr60PyqD8yzA/cTtQgdRj3xUG6/Fu4PF06/XmK2PpcSTQum9flnfTZ4kj34CPecvBvrnu7TqjdjZj23OWrWgEr5EzwQ7Cp8mTGVMiepwwH4fOqUJolQ6sLAeW/DTtX1wIbKCwcyf8Oj1qDYWcIIgqPp9POpKksoQ3JYHcbj61Lori1SV2K4sVVBj+kDDKyfLNdbVaTcuy24DFUW7WkUllqbEkk77AzjPDI5FpPOKKmWKKK1D/FZICLwTz5PUP35g9p/9noB0AAAAASUVORK5CYII=);
+}
+.pen{
+  height: 1.3em;
+  width: 1.3em;
+  float: right;
+  background-color: transparent;
+  margin-right: 5%;
+  opacity: 0.2;
+}
+.pen:hover{
+  opacity: 1;
 }
 .delete {
   display: inline-block;

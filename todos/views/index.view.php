@@ -9,7 +9,6 @@
                                 <span>
                                         <?= $todo->description ?>
                                 </span>
-                       </li>
                 
               <?php  else : ?>
                         <li class="linethrough">
@@ -17,9 +16,11 @@
                                 <span class="crossedout">
                                         <?= $todo->description ?>
                                 </span>
+                <?php endif; ?>
+                                <img class="pen" src="pen.png">
                         </li>
                 
-        <?php endif; ?>
+              <input type="hidden" name="description" value=" <?= $todo->description ?>">
               <input class="completed" type="hidden" name="completed" value=" <?= $todo->completed ?>">
               <input type="hidden" name="id" value=" <?= $todo->id ?>">
                 </form>
@@ -30,7 +31,7 @@
     
  </ul>   
  <form id="todoForm" action="/task" method="POST">
- <h1>
+ <h1 id="todoHeader">
  Enter your new Todo Item here: <br>
  </h1>
 <label for="desc">Description:  </label>

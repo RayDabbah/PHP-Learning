@@ -27,9 +27,9 @@ class Query
         $statement = $this->pdo->prepare("INSERT INTO $table (`description`, `completed`) VALUES ('$description', '$completed');");
         $statement->execute();
     }
-    public function updateTask($table, $completed, $id)
+    public function updateTask($table, $description, $completed, $id)
     {
-        $statement = $this->pdo->prepare("UPDATE $table SET completed='$completed' WHERE id=$id;");
+        $statement = $this->pdo->prepare("UPDATE $table SET description='$description', completed='$completed' WHERE id=$id;");
         $statement->execute();
     }
 }

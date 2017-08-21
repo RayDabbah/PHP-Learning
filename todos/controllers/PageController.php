@@ -44,7 +44,8 @@ class PageController
     }
     public function update()
     {
-        App::get('database')->updateTask('todos', $_POST['completed'], $_POST['id']);
+        // die(var_dump($_POST));
+        App::get('database')->updateTask('todos', $_POST['description'], $_POST['completed'], $_POST['id']);
         header('Location: /');
     }
 }

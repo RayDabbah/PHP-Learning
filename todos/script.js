@@ -6,6 +6,9 @@ var todoField = document.getElementById("desc");
 var todoSpan = document.querySelectorAll("#todoList span");
 var todoLi = document.querySelectorAll("#todoList li");
 var completed = document.getElementsByClassName('completed');
+const todoForm = document.getElementById('todoForm');
+const pens = Array.from(document.querySelectorAll('.pen'));
+const todoHeader = document.getElementById('todoHeader');
 
 //Prevent the clicking on the trash bin from clicking on the <li> and staying only on the image.
 // Change the class of the image to animate when clicked on.
@@ -60,3 +63,22 @@ for (let i = 0; i < deleteTodo.length; i++) {
     deleteTodo[i].action = '/delete';
   })
 }
+
+//Update the content and/or the completed status of the todo. 
+
+pens.forEach(pen => {
+  pen.addEventListener('click', e => {
+    e.stopPropagation();
+    todoField.value = e.target.parentNode.textContent.trim();
+    todoField.focus();
+    var id = document.createElement('input');
+    id.type = 'hidden';
+    id.name = 'id';
+    id.value = e.target.parentNode.parentNode.childNodes[7].value;
+    console.log(e.target.parentNode.parentNode.childNodes[7].value)
+    todoForm.appendChild(id);
+    todoForm.action = '/update';
+    todoHeader.textContent = 'Update your Todo!';
+    // todoField.value = 
+  }, false);
+})
