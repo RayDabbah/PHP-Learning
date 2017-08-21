@@ -6,22 +6,22 @@ class PageController
     {
         $tasks = App::get('database')->selectAll('todos', 'Task');
 
-         views('index.view', compact('tasks'));
+        views('index.view', compact('tasks'));
     }
 
     public function about()
     {
-         views('about');
+        views('about');
     }
     public function form()
     {
-         views('nameForm');
+        views('nameForm');
 
     }
     public function names()
     {
         $users = App::get('database')->selectAll('users', 'User');
-         views('names', ['users'=> $users]);
+        views('names', ['users' => $users]);
     }
     public function name()
     {
@@ -30,16 +30,21 @@ class PageController
     }
     public function contact()
     {
-         views('contact');
+        views('contact');
     }
     public function task()
     {
         App::get('database')->addTask('todos', $_POST['description'], $_POST['completed']);
         header('Location: /');
     }
-    public function delete(){
+    public function delete()
+    {
         App::get('database')->delete('todos', $_POST['id']);
-        // die(var_dump($_POST));
+        header('Location: /');
+    }
+    public function update()
+    {
+        App::get('database')->updateTask('todos', $_POST['completed'], $_POST['id']);
         header('Location: /');
     }
 }

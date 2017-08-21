@@ -5,6 +5,7 @@ const submit = document.getElementById('submit');
 var todoField = document.getElementById("desc");
 var todoSpan = document.querySelectorAll("#todoList span");
 var todoLi = document.querySelectorAll("#todoList li");
+var completed = document.getElementsByClassName('completed');
 
 //Prevent the clicking on the trash bin from clicking on the <li> and staying only on the image.
 // Change the class of the image to animate when clicked on.
@@ -49,3 +50,13 @@ for (let i = 0; i < deleteTodo.length; i++) {
   });
 }
 
+// Update completed status of toDo when user clicks on it.
+
+for (let i = 0; i < deleteTodo.length; i++) {
+  todoLi[i].addEventListener('click', () => {
+    deleteTodo[i].action = '/update';
+    completed[i].value == 0 ? completed[i].value = 1 : completed[i].value = 0;
+    deleteTodo[i].submit();
+    deleteTodo[i].action = '/delete';
+  })
+}

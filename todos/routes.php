@@ -8,3 +8,4 @@
     $router->postReq('name' , 'PageController@name');
     $router->postReq('task' , 'PageController@task');
     $router->postReq('delete' , 'PageController@delete');
+    $router->postReq('update' , 'PageController@update');

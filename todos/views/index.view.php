@@ -20,6 +20,7 @@
                         </li>
                 
         <?php endif; ?>
+              <input class="completed" type="hidden" name="completed" value=" <?= $todo->completed ?>">
               <input type="hidden" name="id" value=" <?= $todo->id ?>">
                 </form>
         <?php endforeach; ?>
