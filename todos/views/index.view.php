@@ -17,8 +17,8 @@
                                         <?= $todo->description ?>
                                 </span>
                 <?php endif; ?>
-                                <img class="pen" src="pen.png">
-                        </li>
+                <img class="pen" src="pen.png">
+        </li>
                 
               <input type="hidden" name="description" value=" <?= $todo->description ?>">
               <input class="completed" type="hidden" name="completed" value=" <?= $todo->completed ?>">
@@ -31,17 +31,20 @@
     
  </ul>   
  <form id="todoForm" action="/task" method="POST">
- <h1 id="todoHeader">
- Enter your new Todo Item here: <br>
- </h1>
-<label for="desc">Description:  </label>
- <input type="text" id="desc" name="description">
- <p>Completed? </p>
- <label class="radioLabel" for="false">No </label>
- <input type="radio" id="false" name="completed" value="0" checked="checked"><br>
- <label class="radioLabel" for="true">Yes </label>
- <input type="radio" id="true" name="completed" value="1"><br>
- <input type="submit" id="submit" value="Add your Todo!">
+        <h1 id="todoHeader">
+        Enter your new Todo Item here: <br>
+        </h1>
+        <label for="desc">Description:  </label>
+                <input type="text" id="desc" name="description">
+        <p>Completed? </p>
+        <label class="radioLabel" for="false">No </label>
+                <input type="radio" id="false" name="completed" value="0" checked="checked"><br>
+        <label class="radioLabel" for="true">Yes </label>
+                <input type="radio" id="true" name="completed" value="1"><br>
+                <div class="flex">
+                        <input type="submit" id="submit" value="Add your Todo!">
+                        <input id="reset" value="Cancel" type="reset">
+                </div>
  </form>
 </div>
  <script src="script.js"></script>

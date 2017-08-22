@@ -9,6 +9,7 @@ var completed = document.getElementsByClassName('completed');
 const todoForm = document.getElementById('todoForm');
 const pens = Array.from(document.querySelectorAll('.pen'));
 const todoHeader = document.getElementById('todoHeader');
+const reset = document.getElementById('reset');
 
 //Prevent the clicking on the trash bin from clicking on the <li> and staying only on the image.
 // Change the class of the image to animate when clicked on.
@@ -75,10 +76,16 @@ pens.forEach(pen => {
     id.type = 'hidden';
     id.name = 'id';
     id.value = e.target.parentNode.parentNode.childNodes[7].value;
-    console.log(e.target.parentNode.parentNode.childNodes[7].value)
+    submit.value = 'Update!'
     todoForm.appendChild(id);
     todoForm.action = '/update';
     todoHeader.textContent = 'Update your Todo!';
     // todoField.value = 
   }, false);
 })
+
+reset.addEventListener('click', ()=> {
+  todoForm.action = '/task';
+  submit.disabled = true;
+});
+
