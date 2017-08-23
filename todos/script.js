@@ -10,6 +10,9 @@ const todoForm = document.getElementById('todoForm');
 const pens = Array.from(document.querySelectorAll('.pen'));
 const todoHeader = document.getElementById('todoHeader');
 const reset = document.getElementById('reset');
+var complete = document.getElementById('completed');
+var done = document.getElementById('true');
+var notDone = document.getElementById('false');
 
 //Prevent the clicking on the trash bin from clicking on the <li> and staying only on the image.
 // Change the class of the image to animate when clicked on.
@@ -57,7 +60,7 @@ for (let i = 0; i < deleteTodo.length; i++) {
 // Update completed status of toDo when user clicks on it.
 
 for (let i = 0; i < deleteTodo.length; i++) {
-  todoLi[i].addEventListener('click', () => {
+    todoLi[i].addEventListener('click', () => {
     deleteTodo[i].action = '/update';
     completed[i].value == 0 ? completed[i].value = 1 : completed[i].value = 0;
     deleteTodo[i].submit();
@@ -76,6 +79,11 @@ pens.forEach(pen => {
     id.type = 'hidden';
     id.name = 'id';
     id.value = e.target.parentNode.parentNode.childNodes[7].value;
+    e.target.parentNode.parentNode.childNodes[5].value === 0 ? notDone.setAttribute('checked', 'checked') : done.setAttribute('checked', 'checked');
+    console.log(e.target.parentNode.parentNode.childNodes[5].value === 0)
+    console.log(e.target.parentNode.parentNode.childNodes[5].value);
+    console.log(notDone);
+    console.log(done);
     submit.value = 'Update!'
     todoForm.appendChild(id);
     todoForm.action = '/update';
@@ -87,5 +95,6 @@ pens.forEach(pen => {
 reset.addEventListener('click', ()=> {
   todoForm.action = '/task';
   submit.disabled = true;
+  todoHeader.textContent = 'Enter your new Todo Item here:';
 });
 
