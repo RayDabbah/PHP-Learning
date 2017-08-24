@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="php.css">
     <title>To Do Items </title>
 </head>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel" src="arrayPolyfill.js"></script>
 <body>
     <div id="wrapper">
     <div id="content">
