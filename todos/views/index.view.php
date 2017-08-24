@@ -47,5 +47,6 @@
                 </div>
  </form>
 </div>
- <script src="script.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+ <script type="text/babel" src="script.js"></script>
 <?php include 'partials/footer.php' ?>
