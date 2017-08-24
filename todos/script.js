@@ -10,7 +10,6 @@ const todoForm = document.getElementById('todoForm');
 const pens = Array.from(document.querySelectorAll('.pen'));
 const todoHeader = document.getElementById('todoHeader');
 const reset = document.getElementById('reset');
-var complete = document.getElementById('completed');
 var done = document.getElementById('true');
 var notDone = document.getElementById('false');
 
@@ -60,7 +59,7 @@ for (let i = 0; i < deleteTodo.length; i++) {
 // Update completed status of toDo when user clicks on it.
 
 for (let i = 0; i < deleteTodo.length; i++) {
-    todoLi[i].addEventListener('click', () => {
+  todoLi[i].addEventListener('click', () => {
     deleteTodo[i].action = '/update';
     completed[i].value == 0 ? completed[i].value = 1 : completed[i].value = 0;
     deleteTodo[i].submit();
@@ -79,9 +78,15 @@ pens.forEach(pen => {
     id.type = 'hidden';
     id.name = 'id';
     id.value = e.target.parentNode.parentNode.childNodes[7].value;
-    e.target.parentNode.parentNode.childNodes[5].value === 0 ? notDone.setAttribute('checked', 'checked') : done.setAttribute('checked', 'checked');
-    console.log(e.target.parentNode.parentNode.childNodes[5].value === 0)
-    console.log(e.target.parentNode.parentNode.childNodes[5].value);
+    if (e.target.parentNode.parentNode.childNodes[5].value == 0) {
+      notDone.checked = true;
+      done.checked = false;
+    } else {
+      done.checked = true;
+      notDone.checked = false;
+    }
+    console.log(e.target.parentNode.parentNode.childNodes[5].value == 0)
+    console.log(typeof (e.target.parentNode.parentNode.childNodes[5].value));
     console.log(notDone);
     console.log(done);
     submit.value = 'Update!'
@@ -92,7 +97,7 @@ pens.forEach(pen => {
   }, false);
 })
 
-reset.addEventListener('click', ()=> {
+reset.addEventListener('click', () => {
   todoForm.action = '/task';
   submit.disabled = true;
   todoHeader.textContent = 'Enter your new Todo Item here:';
