@@ -1,4 +1,7 @@
 <?php
+ob_start();
+session_start();
+echo 'This is config.php!';
 return [
     'db' => [
         'host' => 'mysql:host=localhost;',
