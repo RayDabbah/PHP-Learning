@@ -21,7 +21,7 @@ logIn.addEventListener('click', ()=>{
         logIn.textContent = 'Click here to sign up!';
         toggle = true;
     }else{
-        newUserForm.action = '/name';
+        newUserForm.action = '/signup';
         loginMessage.textContent = 'Already a member?';
         logIn.textContent = 'Click here to log in';
         toggle = false;

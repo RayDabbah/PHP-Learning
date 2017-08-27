@@ -31,7 +31,7 @@ class PageController
         $users = App::get('database')->selectAll('users', 'User');
         views('names', ['users' => $users]);
     }
-    public function name()
+    public function signup()
     {
         if ($_POST['Confirmpassword'] != $_POST['password']) {
         // die(var_dump($_POST));

@@ -9,7 +9,7 @@
 <a href="#" id="login">
     Click here to log in
 </a>
-<form id="newUserForm" action="/name"  method="POST">
+<form id="newUserForm" action="/signup"  method="POST">
 <label for="username">Name:</label>
 <input id="username" type="text" name="username"><br>
 <label for="email">Email: </label>
