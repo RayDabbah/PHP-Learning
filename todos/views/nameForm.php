@@ -1,7 +1,7 @@
 <?php include 'partials/header.php' ?>
 
-<h1>
-    Enter your name.
+<h1 id="header">
+    Welcome! Please create an account to join!
 </h1>
 <p id="loginMessage">
     Already a member? 

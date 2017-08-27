@@ -225,3 +225,7 @@ i {
   margin: 0 auto;
   display: inline-block;
 }
+#header{
+  text-shadow:  2px 2px 0px green;
+  color: #3d0761;
+}

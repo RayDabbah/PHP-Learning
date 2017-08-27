@@ -6,6 +6,7 @@ var pass = document.getElementById('password');
 var confirmPass = document.getElementById('Confirmpassword');
 var errorMess = document.getElementById('error');
 var confirmPassLabel = document.querySelector('label[for=Confirmpassword]');
+var header = document.getElementById('header');
 
 newUserForm.addEventListener('submit', (e) => {
     if (pass.value != confirmPass.value) {
@@ -18,6 +19,7 @@ newUserForm.addEventListener('submit', (e) => {
 
 logIn.addEventListener('click', ()=>{
     if(!toggle){
+        header.textContent = 'Welcome back! Please enter your login information!';
         newUserForm.action = '/login';
         loginMessage.textContent = 'New guest? ';
         logIn.textContent = 'Click here to sign up!';
@@ -25,6 +27,7 @@ logIn.addEventListener('click', ()=>{
         confirmPassLabel.style.display = 'none';
         toggle = true;
     }else{
+        header.textContent = 'Welcome! Please create an account to join!';
         newUserForm.action = '/signup';
         loginMessage.textContent = 'Already a member?';
         logIn.textContent = 'Click here to log in';
