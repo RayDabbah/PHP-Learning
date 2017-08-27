@@ -4,6 +4,10 @@ class PageController
 
     public function home()
     {
+        if(empty($_SESSION))
+        {
+           return header('Location: /form');
+        };
         $tasks = App::get('database')->selectAll('todos', 'Task');
         // die(var_dump($tasks));
         views('index.view', compact('tasks'));
@@ -67,7 +71,6 @@ class PageController
         $_SESSION['username'] = $returningUser[0]->username;
         $_SESSION['email'] = $returningUser[0]->email;
         $_SESSION['id'] = $returningUser[0]->id;
-        // die(var_dump($_SESSION));
-        header('Location: /');
+       isset($_SERVER["HTTP_REFERER"]) ? header('Location:' . $_SERVER["HTTP_REFERER"]) : header('Location: /');
     }
 }
