@@ -4,9 +4,9 @@ class PageController
 
     public function home()
     {
-        if(empty($_SESSION))
-        {
-           return header('Location: /form');
+        if (empty($_SESSION))
+            {
+            return header('Location: /form');
         };
         $tasks = App::get('database')->selectAll('todos', 'Task');
         // die(var_dump($tasks));
@@ -19,6 +19,10 @@ class PageController
     }
     public function form()
     {
+        if (!empty($_SESSION))
+        {
+        return header('Location: /');
+    };
         views('nameForm');
 
     }
@@ -34,12 +38,7 @@ class PageController
             return header('Location: /form');
         }
         App::get('database')->addUser('users', $_POST['username'], $_POST['email'], $_POST['password']);
-        $newUser = App::get('database')->findUser('User', 'users', $_POST['username'], $_POST['email'], $_POST['password']);
-        $_SESSION['username'] = $newUser[0]->username;
-        $_SESSION['email'] = $newUser[0]->email;
-        $_SESSION['id'] = $newUser[0]->id;
-        // die(var_dump($_SESSION));
-        header('Location: /');
+        $this->login();
     }
     public function contact()
     {
@@ -71,6 +70,6 @@ class PageController
         $_SESSION['username'] = $returningUser[0]->username;
         $_SESSION['email'] = $returningUser[0]->email;
         $_SESSION['id'] = $returningUser[0]->id;
-       isset($_SERVER["HTTP_REFERER"]) ? header('Location:' . $_SERVER["HTTP_REFERER"]) : header('Location: /');
+       /* isset($_SERVER["HTTP_REFERER"]) ? header('Location:' . $_SERVER["HTTP_REFERER"]) : */ header('Location: /');
     }
 }
