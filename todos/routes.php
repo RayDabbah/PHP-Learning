@@ -9,4 +9,5 @@
     $router->postReq('task' , 'PageController@task');
     $router->postReq('delete' , 'PageController@delete');
     $router->postReq('update' , 'PageController@update');
+    $router->postReq('login' , 'PageController@login');
     $router->getReq('logOut' , 'PageController@logOut');

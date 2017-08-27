@@ -61,4 +61,13 @@ class PageController
         session_destroy();
         header('Location:' . $_SERVER["HTTP_REFERER"]);
     }
+    public function login()
+    {
+        $returningUser = App::get('database')->findUser('User', 'users', $_POST['username'], $_POST['email'], $_POST['password']);
+        $_SESSION['username'] = $returningUser[0]->username;
+        $_SESSION['email'] = $returningUser[0]->email;
+        $_SESSION['id'] = $returningUser[0]->id;
+        // die(var_dump($_SESSION));
+        header('Location: /');
+    }
 }
