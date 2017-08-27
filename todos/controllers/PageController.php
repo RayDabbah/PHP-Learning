@@ -37,11 +37,18 @@ class PageController
         // die(var_dump($_POST));
             return header('Location: /form');
         }
+        foreach($_POST as $field)
+        {
+            if(empty($field)){
+                $message = "$field cannot be empty.";
+                return views('nameForm', ['message'=> $message]);
+            }
+        }
         $test = App::get('database')->verifyUser('User', 'users', $_POST['username'], $_POST['email'], $_POST['password']);
+        // die(var_dump($_POST));
         if(!empty($test)){
             // die(var_dump($test));
             $message = 'That username or email was already taken. If that was you please click the login button to log on.';
-            // die(var_dump($message));
            return views('nameForm', ['message'=> $message]);
         }
         App::get('database')->addUser('users', $_POST['username'], $_POST['email'], $_POST['password']);
