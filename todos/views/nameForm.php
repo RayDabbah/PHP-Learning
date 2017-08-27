@@ -18,7 +18,9 @@
 <input id="password" type="password" name="password" ><br>
 <label for="Confirmpassword">Confirm Password: </label>
 <input id="Confirmpassword" type="password" name="Confirmpassword"><br>
-<p id="error"></p>
+<p id="error">
+<?= isset($message) ? $message : ''; ?>
+</p>
 <input type="submit">
 </form>
 

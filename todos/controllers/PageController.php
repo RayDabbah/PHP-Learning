@@ -37,6 +37,13 @@ class PageController
         // die(var_dump($_POST));
             return header('Location: /form');
         }
+        $test = App::get('database')->verifyUser('User', 'users', $_POST['username'], $_POST['email'], $_POST['password']);
+        if(!empty($test)){
+            // die(var_dump($test));
+            $message = 'That username or email was already taken. If that was you please click the login button to log on.';
+            // die(var_dump($message));
+           return views('nameForm', ['message'=> $message]);
+        }
         App::get('database')->addUser('users', $_POST['username'], $_POST['email'], $_POST['password']);
         $this->login();
     }
