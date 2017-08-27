@@ -5,6 +5,8 @@ var toggle = false;
 var pass = document.getElementById('password');
 var confirmPass = document.getElementById('Confirmpassword');
 var errorMess = document.getElementById('error');
+var confirmPassLabel = document.querySelector('label[for=Confirmpassword]');
+
 newUserForm.addEventListener('submit', (e) => {
     if (pass.value != confirmPass.value) {
         errorMess.style.color = 'red';
@@ -19,11 +21,15 @@ logIn.addEventListener('click', ()=>{
         newUserForm.action = '/login';
         loginMessage.textContent = 'New guest? ';
         logIn.textContent = 'Click here to sign up!';
+        confirmPass.style.display = 'none';
+        confirmPassLabel.style.display = 'none';
         toggle = true;
     }else{
         newUserForm.action = '/signup';
         loginMessage.textContent = 'Already a member?';
         logIn.textContent = 'Click here to log in';
+        confirmPass.style.display = 'block';
+        confirmPassLabel.style.display = 'block';
         toggle = false;
     }
 })
