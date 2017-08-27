@@ -229,3 +229,6 @@ i {
   text-shadow:  2px 2px 0px green;
   color: #3d0761;
 }
+#error{
+  color: red;
+}
