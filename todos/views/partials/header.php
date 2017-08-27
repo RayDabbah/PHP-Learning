@@ -20,10 +20,11 @@
                     echo "Signed in as {$_SESSION['username']}";
                 } ?>
         </a>
-        <a class="right" href="form">Signup</a>
         <?php 
         if (!empty($_SESSION)) : ?>
            <a class="right" href="logOut">Log Out </a>
+           <?php else : ?>
+           <a class="right" href="form">Signup/Login</a>
             <?php endif; ?>
 
                 <a class="right" href="about">About Us</a>
