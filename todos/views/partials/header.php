@@ -14,7 +14,18 @@
     <nav>
         <a href="/">Home</a>
         <a href="/names">Meet other users!</a>
+        <a href="#">
+             <?php
+                if (!empty($_SESSION)) {
+                    echo "Signed in as {$_SESSION['username']}";
+                } ?>
+        </a>
         <a class="right" href="form">Signup</a>
-        <a class="right" href="about">About Us</a>
-        <a class="right" href="contact">Contact Us!</a>
-    </nav>
+        <?php 
+        if (!empty($_SESSION)) : ?>
+           <a class="right" href="logOut">Log Out </a>
+            <?php endif; ?>
+
+                <a class="right" href="about">About Us</a>
+                <a class="right" href="contact">Contact Us !</a>
+                </nav>
