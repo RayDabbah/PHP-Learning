@@ -12,6 +12,7 @@ return array(
     'Composer\\Autoload\\ComposerStaticInitcfd41cb2202dc06437d673ab0bf7917c' => $vendorDir . '/composer/autoload_static.php',
     'Connector' => $baseDir . '/core/database/Connector.php',
     'PageController' => $baseDir . '/controllers/PageController.php',
+    'Password' => $baseDir . '/core/password.php',
     'Query' => $baseDir . '/core/database/QueryBuilder.php',
     'Router' => $baseDir . '/core/Router.php',
     'Task' => $baseDir . '/core/Task.php',
