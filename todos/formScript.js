@@ -23,10 +23,12 @@ logIn.addEventListener('click', () => {
         loginMessage.textContent = 'New guest? ';
         logIn.textContent = 'Click here to sign up!';
         confirmPass.type = 'hidden';
+        confirmPass.value = pass.value;
         confirmPassLabel.style.display = 'none';
         errorMess.textContent = '';
         toggle = true;
     } else {
+        confirmPass.value = '';
         header.textContent = 'Sign up';
         newUserForm.action = '/signup';
         loginMessage.textContent = 'Already a member?';
@@ -39,11 +41,9 @@ logIn.addEventListener('click', () => {
 })
 // console.log(document.querySelectorAll('input'));
 submit.disabled = true;
-newUserForm.addEventListener('input', () => {
-    // enableSubmit();
-    if (toggle) confirmPass.value = pass.value;
-    enableSubmit() ? submit.disabled = false : submit.disabled = true;
-});
+newUserForm.addEventListener('input', listenerFunction);
+login.addEventListener('click', listenerFunction);
+
 
 function enableSubmit() {
     return Array.from(document.querySelectorAll('input')).every(input => {
@@ -52,3 +52,8 @@ function enableSubmit() {
     });
 }
 
+function listenerFunction() {
+    // enableSubmit();
+    if (toggle) confirmPass.value = pass.value;
+    enableSubmit() ? submit.disabled = false : submit.disabled = true;
+}
