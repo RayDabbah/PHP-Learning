@@ -7,32 +7,48 @@ var confirmPass = document.getElementById('Confirmpassword');
 var errorMess = document.getElementById('error');
 var confirmPassLabel = document.querySelector('label[for=Confirmpassword]');
 var header = document.getElementById('header');
-
+var submit = document.querySelector('input[type=submit]');
 newUserForm.addEventListener('submit', (e) => {
     if (pass.value != confirmPass.value && !toggle) {
-        errorMess.style.color = 'red';
         errorMess.textContent = 'Passwords do not match!';
         e.preventDefault();
     }
 })
 
 
-logIn.addEventListener('click', ()=>{
-    if(!toggle){
+logIn.addEventListener('click', () => {
+    if (!toggle) {
         header.textContent = 'Welcome back! Please enter your login information!';
         newUserForm.action = '/login';
         loginMessage.textContent = 'New guest? ';
         logIn.textContent = 'Click here to sign up!';
-        confirmPass.style.display = 'none';
+        confirmPass.type = 'hidden';
         confirmPassLabel.style.display = 'none';
+        errorMess.textContent = '';
         toggle = true;
-    }else{
-        header.textContent = 'Welcome! Please create an account to join!';
+    } else {
+        header.textContent = 'Sign up';
         newUserForm.action = '/signup';
         loginMessage.textContent = 'Already a member?';
         logIn.textContent = 'Click here to log in';
-        confirmPass.style.display = 'block';
+        confirmPass.type = 'password';
         confirmPassLabel.style.display = 'block';
+        errorMess.textContent = '';
         toggle = false;
     }
 })
+// console.log(document.querySelectorAll('input'));
+submit.disabled = true;
+newUserForm.addEventListener('input', () => {
+    // enableSubmit();
+    if (toggle) confirmPass.value = pass.value;
+    enableSubmit() ? submit.disabled = false : submit.disabled = true;
+});
+
+function enableSubmit() {
+    return Array.from(document.querySelectorAll('input')).every(input => {
+        // console.log(input.value);
+        return input.value;
+    });
+}
+

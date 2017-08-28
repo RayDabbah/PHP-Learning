@@ -1,7 +1,7 @@
 <?php include 'partials/header.php' ?>
 
 <h1 id="header">
-    Welcome! Please create an account to join!
+    Sign up
 </h1>
 <p id="loginMessage">
     Already a member? 
@@ -21,7 +21,7 @@
 <p id="error">
 <?= isset($message) ? $message : ''; ?>
 </p>
-<input type="submit">
+<input type="submit" value="Welcome!!">
 </form>
 
 <script src="formScript.js"></script>

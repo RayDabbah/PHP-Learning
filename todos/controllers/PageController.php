@@ -82,14 +82,16 @@ class PageController
     public function login()
     {
         $returningUser = App::get('database')->findUser('User', 'users', $_POST['username'], $_POST['email'], $_POST['password']);
-        $_SESSION['username'] = $returningUser[0]->username;
-        $_SESSION['email'] = $returningUser[0]->email;
-        $_SESSION['id'] = $returningUser[0]->id;
-        if (isset($_SESSION['username']))
+        // var_dump($returningUser[0]->username);
+        if (isset($returningUser[0]->username))
             {
-            header('Location: /');
+            $_SESSION['username'] = $returningUser[0]->username;
+            $_SESSION['email'] = $returningUser[0]->email;
+            $_SESSION['id'] = $returningUser[0]->id;
+           return header('Location: /');
         }
-        else {
+        else 
+        {
             $message = 'Username or password are incorrect. Please try again.';
             return views('nameForm', ['message' => $message]);
         }
