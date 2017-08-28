@@ -26,5 +26,5 @@
 <input type="submit" value="Welcome!!">
 </form>
 
-<script src="formScript.js"></script>
+<script type="text/babel" src="formScript.js"></script>
 <?php include 'partials/footer.php' ?>
