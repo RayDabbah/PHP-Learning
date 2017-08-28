@@ -4,8 +4,11 @@ class PageController
 
     public function home()
     {
+        if (empty($_SESSION))
+            {
+            return header('Location: /form');
+        };
         $tasks = App::get('database')->selectAll('todos', 'Task');
-
         views('index.view', compact('tasks'));
     }
 
@@ -15,6 +18,10 @@ class PageController
     }
     public function form()
     {
+        if (!empty($_SESSION))
+            {
+            return header('Location: /');
+        };
         views('nameForm');
 
     }
@@ -23,10 +30,29 @@ class PageController
         $users = App::get('database')->selectAll('users', 'User');
         views('names', ['users' => $users]);
     }
-    public function name()
+    public function signup()
     {
-        App::get('database')->addUser('users', $_POST[username], $_POST[email], $_POST[password]);
-        header('Location: /names');
+        if ($_POST['Confirmpassword'] != $_POST['password']) {
+            return header('Location: /form');
+        }
+        $message;
+        foreach ($_POST as $field => $input)
+            {
+            if (empty($input)) {
+                $message .= ucwords($field) . ' cannot be empty.<br>' . "\n";
+            }
+        }
+        if (isset($message))
+            {
+            return views('nameForm', ['message' => $message]);
+        }
+        $test = App::get('database')->verifyUser('User', 'users', $_POST['username'], $_POST['email'], $_POST['password']);
+        if (!empty($test)) {
+            $message = 'That username or email was already taken. If that was you please click the login button to log on.';
+            return views('nameForm', ['message' => $message]);
+        }
+        App::get('database')->addUser('users', $_POST['username'], $_POST['email'], password_hash($_POST['password'], PASSWORD_DEFAULT));
+        $this->login();
     }
     public function contact()
     {
@@ -44,8 +70,30 @@ class PageController
     }
     public function update()
     {
-        // die(var_dump($_POST));
         App::get('database')->updateTask('todos', $_POST['description'], $_POST['completed'], $_POST['id']);
         header('Location: /');
+    }
+    public function logOut()
+    {
+        session_destroy();
+        header('Location:' . $_SERVER["HTTP_REFERER"]);
+    }
+    public function login()
+    {
+        $returningUser = App::get('database')->findUser('User', 'users', $_POST['username'], $_POST['email']);
+        $passwordTest = password_verify($_POST['password'], $returningUser[0]->password);
+
+        if (isset($returningUser[0]->username) && $passwordTest)
+            {
+            $_SESSION['username'] = $returningUser[0]->username;
+            $_SESSION['email'] = $returningUser[0]->email;
+            $_SESSION['id'] = $returningUser[0]->id;
+            return header('Location: /');
+        }
+        else
+            {
+            $message = 'Username or password are incorrect. Please try again.';
+            return views('nameForm', ['message' => $message]);
+        }
     }
 }

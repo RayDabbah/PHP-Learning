@@ -102,7 +102,7 @@ nav > a {
   color: white;
   display: inline-block;
   position: relative;
-  height: 100%;
+  /* height: 100%; */
   background: transparent;
   padding: 11px;
   text-decoration: none;
@@ -220,4 +220,21 @@ i {
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
   transform: scale(1.2);
+}
+#loginMessage{
+  margin: 0 auto;
+  display: inline-block;
+}
+#header{
+  text-shadow:  2px 2px 0px green;
+  color: #3d0761;
+}
+#error{
+  color: red;
+}
+#switchMethod{
+  text-align: center;
+  font-size: 1.1em;
+  color: green;
+  text-shadow: 2px 2px 2px gray;
 }
