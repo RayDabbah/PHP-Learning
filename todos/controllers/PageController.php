@@ -20,9 +20,9 @@ class PageController
     public function form()
     {
         if (!empty($_SESSION))
-        {
-        return header('Location: /');
-    };
+            {
+            return header('Location: /');
+        };
         views('nameForm');
 
     }
@@ -34,22 +34,23 @@ class PageController
     public function signup()
     {
         if ($_POST['Confirmpassword'] != $_POST['password']) {
-        // die(var_dump($_POST));
             return header('Location: /form');
         }
-        foreach($_POST as $field)
-        {
-            if(empty($field)){
-                $message = "$field cannot be empty.";
-                return views('nameForm', ['message'=> $message]);
+        $message;
+        foreach ($_POST as $field => $input)
+            {
+            if (empty($input)) {
+                $message .= ucwords($field) . ' cannot be empty.<br>' . "\n";
             }
         }
+        if ($message)
+            {
+            return views('nameForm', ['message' => $message]);
+        }
         $test = App::get('database')->verifyUser('User', 'users', $_POST['username'], $_POST['email'], $_POST['password']);
-        // die(var_dump($_POST));
-        if(!empty($test)){
-            // die(var_dump($test));
+        if (!empty($test)) {
             $message = 'That username or email was already taken. If that was you please click the login button to log on.';
-           return views('nameForm', ['message'=> $message]);
+            return views('nameForm', ['message' => $message]);
         }
         App::get('database')->addUser('users', $_POST['username'], $_POST['email'], $_POST['password']);
         $this->login();
@@ -84,6 +85,13 @@ class PageController
         $_SESSION['username'] = $returningUser[0]->username;
         $_SESSION['email'] = $returningUser[0]->email;
         $_SESSION['id'] = $returningUser[0]->id;
-       /* isset($_SERVER["HTTP_REFERER"]) ? header('Location:' . $_SERVER["HTTP_REFERER"]) : */ header('Location: /');
+        if (isset($_SESSION['username']))
+            {
+            header('Location: /');
+        }
+        else {
+            $message = 'Username or password are incorrect. Please try again.';
+            return views('nameForm', ['message' => $message]);
+        }
     }
 }

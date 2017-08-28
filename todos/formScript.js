@@ -9,7 +9,7 @@ var confirmPassLabel = document.querySelector('label[for=Confirmpassword]');
 var header = document.getElementById('header');
 
 newUserForm.addEventListener('submit', (e) => {
-    if (pass.value != confirmPass.value) {
+    if (pass.value != confirmPass.value && !toggle) {
         errorMess.style.color = 'red';
         errorMess.textContent = 'Passwords do not match!';
         e.preventDefault();
