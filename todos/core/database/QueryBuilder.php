@@ -6,12 +6,12 @@ class Query
     {
         $this->pdo = $pdo;
     }
-    public function findUser($class, $table,$username, $email, $password)
+    public function findUser($class, $table,$username, $email)
     {
-        $statement = $this->pdo->prepare("SELECT username, email, id FROM $table WHERE email= :email AND username= :username AND password= :password;");
+        $statement = $this->pdo->prepare("SELECT username, email, id, password FROM $table WHERE email= :email AND username= :username;");
         $statement->bindParam(':username', $username);
         $statement->bindParam(':email', $email);
-        $statement->bindParam(':password', $password);
+        // $statement->bindParam(':password', $password);
         $statement->execute();
         return  $statement->fetchAll(PDO::FETCH_CLASS, $class);
     }

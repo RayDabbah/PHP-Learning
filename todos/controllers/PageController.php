@@ -47,12 +47,12 @@ class PageController
             {
             return views('nameForm', ['message' => $message]);
         }
-        $test = App::get('database')->verifyUser('User', 'users', $_POST['username'], $_POST['email'], $_POST['password']);
+        $test = App::get('database')->verifyUser('User', 'users', $_POST['username'], $_POST['email'], password_hash($_POST['password']));
         if (!empty($test)) {
             $message = 'That username or email was already taken. If that was you please click the login button to log on.';
             return views('nameForm', ['message' => $message]);
         }
-        App::get('database')->addUser('users', $_POST['username'], $_POST['email'], $_POST['password']);
+        App::get('database')->addUser('users', $_POST['username'], $_POST['email'], password_hash($_POST['password'], PASSWORD_DEFAULT));
         $this->login();
     }
     public function contact()
@@ -81,17 +81,18 @@ class PageController
     }
     public function login()
     {
-        $returningUser = App::get('database')->findUser('User', 'users', $_POST['username'], $_POST['email'], $_POST['password']);
-        // var_dump($returningUser[0]->username);
-        if (isset($returningUser[0]->username))
+        $returningUser = App::get('database')->findUser('User', 'users', $_POST['username'], $_POST['email']);
+        $passwordTest = password_verify($_POST['password'], $returningUser[0]->password);
+
+        if (isset($returningUser[0]->username) && $passwordTest)
             {
             $_SESSION['username'] = $returningUser[0]->username;
             $_SESSION['email'] = $returningUser[0]->email;
             $_SESSION['id'] = $returningUser[0]->id;
-           return header('Location: /');
+            return header('Location: /');
         }
-        else 
-        {
+        else
+            {
             $message = 'Username or password are incorrect. Please try again.';
             return views('nameForm', ['message' => $message]);
         }
