@@ -3,12 +3,14 @@
 <h1 id="header">
     Sign up
 </h1>
-<p id="loginMessage">
-    Already a member? 
-</p>
-<a href="#" id="login">
-    Click here to log in
-</a>
+<div id="switchMethod">
+    <p id="loginMessage">
+        Already a member? 
+    </p>
+    <a href="#" id="login">
+        Click here to log in
+    </a>
+</div>
 <form id="newUserForm" action="/signup"  method="POST">
 <label for="username">Name:</label>
 <input id="username" type="text" name="username"><br>

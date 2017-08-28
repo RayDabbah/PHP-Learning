@@ -232,3 +232,9 @@ i {
 #error{
   color: red;
 }
+#switchMethod{
+  text-align: center;
+  font-size: 1.1em;
+  color: green;
+  text-shadow: 2px 2px 2px gray;
+}
