@@ -9,7 +9,6 @@ class PageController
             return header('Location: /form');
         };
         $tasks = App::get('database')->selectAll('todos', 'Task');
-        // die(var_dump($tasks));
         views('index.view', compact('tasks'));
     }
 
@@ -43,11 +42,11 @@ class PageController
                 $message .= ucwords($field) . ' cannot be empty.<br>' . "\n";
             }
         }
-        if ($message)
+        if (isset($message))
             {
             return views('nameForm', ['message' => $message]);
         }
-        $test = App::get('database')->verifyUser('User', 'users', $_POST['username'], $_POST['email'], password_hash($_POST['password']));
+        $test = App::get('database')->verifyUser('User', 'users', $_POST['username'], $_POST['email'], $_POST['password']);
         if (!empty($test)) {
             $message = 'That username or email was already taken. If that was you please click the login button to log on.';
             return views('nameForm', ['message' => $message]);
