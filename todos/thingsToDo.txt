@@ -1,3 +1,3 @@
-1. Associate todos with users.
+mysql> ALTER TABLE todos ADD userid int;
 
 2. Send a verification email to new users and for password resets.

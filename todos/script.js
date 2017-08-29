@@ -8,7 +8,6 @@ var todoLi = document.querySelectorAll("#todoList li");
 var completed = document.getElementsByClassName('completed');
 const todoForm = document.getElementById('todoForm');
 const pens = Array.from(document.querySelectorAll('.pen'));
-const todoHeader = document.getElementById('todoHeader');
 const reset = document.getElementById('reset');
 var done = document.getElementById('true');
 var notDone = document.getElementById('false');
@@ -88,7 +87,6 @@ pens.forEach(pen => {
     submit.value = 'Update!'
     todoForm.appendChild(id);
     todoForm.action = '/update';
-    todoHeader.textContent = 'Update your Todo!';
     desc.placeholder = "Update your Todo!";
   }, false);
 })
@@ -96,7 +94,6 @@ pens.forEach(pen => {
 reset.addEventListener('click', () => {
   todoForm.action = '/task';
   submit.disabled = true;
-  todoHeader.textContent = 'Enter your new Todo Item here:';
   desc.placeholder = "Enter your Todo here!";
 });
 

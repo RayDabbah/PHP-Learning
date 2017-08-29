@@ -1,7 +1,10 @@
 <?php include 'partials/header.php' ?>
 <div class="flex">
  <ul id="todoList">
-    <?php foreach ($tasks as $todo) : ?>
+    <?php if (empty($tasks)) {
+                echo '<li>Your Todos will go here.</li>';
+        };
+        foreach ($tasks as $todo) : ?>
     <form class="deleteTodo" action="/delete" method="POST">
              <?php if (!$todo->completed) : ?>
                        <li class="incompleteTodo">
@@ -31,10 +34,6 @@
     
  </ul>   
  <form id="todoForm" action="/task" method="POST">
-        <h1 id="todoHeader">
-        Enter your new Todo Item here: <br>
-        </h1>
-        <label for="desc">Description:  </label>
                 <textarea name="description" id="desc" placeholder="Enter your Todo here!" cols="30" rows="10"></textarea>
         <p>Completed? </p>
         <label class="radioLabel" for="false">No </label>
