@@ -8,7 +8,7 @@ var confirmPassLabel = document.querySelector('label[for=Confirmpassword]');
 var header = document.getElementById('header');
 var submit = document.querySelector('input[type=submit]');
 var toggle = false;
-
+console.log(window.location.pathname);
 // Make sure that password confirm is the same as password
 
 newUserForm.addEventListener('submit', (e) => {
@@ -20,8 +20,15 @@ newUserForm.addEventListener('submit', (e) => {
 
 // Toggle form for new and returning users
 
+toggleLogin(window.location.pathname === '/login');
+
 logIn.addEventListener('click', () => {
-    if (!toggle) {
+    toggleLogin(!toggle);
+});
+
+
+function toggleLogin(switchFormType) {
+    if (switchFormType) {
         header.textContent = 'Welcome back! Please enter your login information!';
         newUserForm.action = '/login';
         loginMessage.textContent = 'New guest? ';
@@ -42,7 +49,7 @@ logIn.addEventListener('click', () => {
         errorMess.textContent = '';
         toggle = false;
     }
-})
+}
 
 // Toggle submit disabled depending on whether the correct fields are filled out
 
