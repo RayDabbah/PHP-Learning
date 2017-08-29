@@ -42,7 +42,6 @@ class PageController
                 $message .= ucwords($field) . ' cannot be empty.<br>' . "\n";
             }
         }
-        // die(var_dump($message));
         $test = App::get('database')->verifyUser('User', 'users', $_POST['username'], $_POST['email']);
         if (!empty($test)) {
             $message = 'That username or email was already taken. If that was you please click the login button to log on.';
@@ -82,8 +81,8 @@ class PageController
     {
         $returningUser = App::get('database')->findUser('User', 'users', $_POST['username'], $_POST['email']);
         $passwordTest = password_verify($_POST['password'], $returningUser[0]->password);
-
-        if (isset($returningUser[0]->username) && $passwordTest)
+        // die(var_dump($returningUser));
+        if (isset($returningUser) && $passwordTest)
             {
             $_SESSION['username'] = $returningUser[0]->username;
             $_SESSION['email'] = $returningUser[0]->email;
