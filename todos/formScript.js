@@ -1,13 +1,16 @@
 var logIn = document.getElementById('login');
 var newUserForm = document.getElementById('newUserForm');
 var loginMessage = document.getElementById('loginMessage');
-var toggle = false;
 var pass = document.getElementById('password');
 var confirmPass = document.getElementById('Confirmpassword');
 var errorMess = document.getElementById('error');
 var confirmPassLabel = document.querySelector('label[for=Confirmpassword]');
 var header = document.getElementById('header');
 var submit = document.querySelector('input[type=submit]');
+var toggle = false;
+
+// Make sure that password confirm is the same as password
+
 newUserForm.addEventListener('submit', (e) => {
     if (pass.value != confirmPass.value && !toggle) {
         errorMess.textContent = 'Passwords do not match!';
@@ -15,6 +18,7 @@ newUserForm.addEventListener('submit', (e) => {
     }
 })
 
+// Toggle form for new and returning users
 
 logIn.addEventListener('click', () => {
     if (!toggle) {
@@ -39,7 +43,9 @@ logIn.addEventListener('click', () => {
         toggle = false;
     }
 })
-// console.log(document.querySelectorAll('input'));
+
+// Toggle submit disabled depending on whether the correct fields are filled out
+
 submit.disabled = true;
 newUserForm.addEventListener('input', listenerFunction);
 login.addEventListener('click', listenerFunction);
