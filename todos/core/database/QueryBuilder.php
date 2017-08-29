@@ -28,6 +28,13 @@ class Query
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_CLASS, $class);
     }
+    public function selectUsersTasks($table, $class, $userid)
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM $table WHERE userid= :userid");
+        $statement->bindParam(':userid', $userid);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_CLASS, $class);
+    }
     public function delete($table, $id)
     {
         $statement = $this->pdo->prepare("DELETE FROM $table WHERE id=:id");
@@ -42,11 +49,12 @@ class Query
         $statement->bindParam(':password', $password);
         $statement->execute();
     }
-    public function addTask($table, $description, $completed)
+    public function addTask($table, $description, $completed, $userid)
     {
-        $statement = $this->pdo->prepare("INSERT INTO $table (`description`, `completed`) VALUES (:description, :completed);");
+        $statement = $this->pdo->prepare("INSERT INTO $table (`description`, `completed`, `userid`) VALUES (:description, :completed, :userid);");
         $statement->bindParam(':description', $description);
         $statement->bindParam(':completed', $completed);
+        $statement->bindParam(':userid', $userid);
         $statement->execute();
     }
     public function updateTask($table, $description, $completed, $id)

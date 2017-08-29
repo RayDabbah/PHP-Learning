@@ -8,7 +8,7 @@ class PageController
             {
             return header('Location: /form');
         };
-        $tasks = App::get('database')->selectAll('todos', 'Task');
+        $tasks = App::get('database')->selectUsersTasks('todos', 'Task', $_SESSION['id']);
         views('index.view', compact('tasks'));
     }
 
@@ -59,7 +59,7 @@ class PageController
     }
     public function task()
     {
-        App::get('database')->addTask('todos', $_POST['description'], $_POST['completed']);
+        App::get('database')->addTask('todos', $_POST['description'], $_POST['completed'], $_SESSION['id']);
         header('Location: /');
     }
     public function delete()
