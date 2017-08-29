@@ -35,7 +35,7 @@
         Enter your new Todo Item here: <br>
         </h1>
         <label for="desc">Description:  </label>
-                <textarea name="description" id="desc" cols="30" rows="10"></textarea>
+                <textarea name="description" id="desc" placeholder="Enter your Todo here!" cols="30" rows="10"></textarea>
         <p>Completed? </p>
         <label class="radioLabel" for="false">No </label>
                 <input type="radio" id="false" name="completed" value="0" checked="checked"><br>
