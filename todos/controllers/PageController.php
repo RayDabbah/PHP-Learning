@@ -42,13 +42,13 @@ class PageController
                 $message .= ucwords($field) . ' cannot be empty.<br>' . "\n";
             }
         }
-        if (isset($message))
-            {
-            return views('nameForm', ['message' => $message]);
-        }
-        $test = App::get('database')->verifyUser('User', 'users', $_POST['username'], $_POST['email'], $_POST['password']);
+        // die(var_dump($message));
+        $test = App::get('database')->verifyUser('User', 'users', $_POST['username'], $_POST['email']);
         if (!empty($test)) {
             $message = 'That username or email was already taken. If that was you please click the login button to log on.';
+        }
+        if (isset($message))
+            {
             return views('nameForm', ['message' => $message]);
         }
         App::get('database')->addUser('users', $_POST['username'], $_POST['email'], password_hash($_POST['password'], PASSWORD_DEFAULT));

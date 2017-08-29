@@ -14,9 +14,9 @@ class Query
         $statement->execute();
         return  $statement->fetchAll(PDO::FETCH_CLASS, $class);
     }
-    public function verifyUser($class, $table,$username, $email)
+    public function verifyUser($class, $table, $username, $email)
     {
-        $statement = $this->pdo->prepare("SELECT username, email, id FROM $table WHERE email= :email OR username= :username;");
+        $statement = $this->pdo->prepare("SELECT username, email FROM $table WHERE username= :username OR  email= :email;");
         $statement->bindParam(':username', $username);
         $statement->bindParam(':email', $email);
         $statement->execute();

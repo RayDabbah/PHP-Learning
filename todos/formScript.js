@@ -23,6 +23,7 @@ newUserForm.addEventListener('submit', (e) => {
 toggleLogin(window.location.pathname === '/login');
 
 logIn.addEventListener('click', () => {
+    errorMess.textContent = '';
     toggleLogin(!toggle);
 });
 
@@ -36,7 +37,6 @@ function toggleLogin(switchFormType) {
         confirmPass.type = 'hidden';
         confirmPass.value = pass.value;
         confirmPassLabel.style.display = 'none';
-        errorMess.textContent = '';
         toggle = true;
     } else {
         confirmPass.value = '';
@@ -46,7 +46,6 @@ function toggleLogin(switchFormType) {
         logIn.textContent = 'Click here to log in';
         confirmPass.type = 'password';
         confirmPassLabel.style.display = 'block';
-        errorMess.textContent = '';
         toggle = false;
     }
 }
