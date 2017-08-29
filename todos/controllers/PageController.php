@@ -8,7 +8,7 @@ class PageController
             {
             return header('Location: /form');
         };
-        $tasks = App::get('database')->selectAll('todos', 'Task');
+        $tasks = App::get('database')->selectUsersTasks('todos', 'Task', $_SESSION['id']);
         views('index.view', compact('tasks'));
     }
 
@@ -42,13 +42,12 @@ class PageController
                 $message .= ucwords($field) . ' cannot be empty.<br>' . "\n";
             }
         }
-        if (isset($message))
-            {
-            return views('nameForm', ['message' => $message]);
-        }
-        $test = App::get('database')->verifyUser('User', 'users', $_POST['username'], $_POST['email'], $_POST['password']);
+        $test = App::get('database')->verifyUser('User', 'users', $_POST['username'], $_POST['email']);
         if (!empty($test)) {
             $message = 'That username or email was already taken. If that was you please click the login button to log on.';
+        }
+        if (isset($message))
+            {
             return views('nameForm', ['message' => $message]);
         }
         App::get('database')->addUser('users', $_POST['username'], $_POST['email'], password_hash($_POST['password'], PASSWORD_DEFAULT));
@@ -60,7 +59,7 @@ class PageController
     }
     public function task()
     {
-        App::get('database')->addTask('todos', $_POST['description'], $_POST['completed']);
+        App::get('database')->addTask('todos', $_POST['description'], $_POST['completed'], $_SESSION['id']);
         header('Location: /');
     }
     public function delete()
@@ -82,8 +81,8 @@ class PageController
     {
         $returningUser = App::get('database')->findUser('User', 'users', $_POST['username'], $_POST['email']);
         $passwordTest = password_verify($_POST['password'], $returningUser[0]->password);
-
-        if (isset($returningUser[0]->username) && $passwordTest)
+        // die(var_dump($returningUser));
+        if (isset($returningUser) && $passwordTest)
             {
             $_SESSION['username'] = $returningUser[0]->username;
             $_SESSION['email'] = $returningUser[0]->email;

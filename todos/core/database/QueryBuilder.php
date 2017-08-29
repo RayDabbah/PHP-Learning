@@ -14,9 +14,9 @@ class Query
         $statement->execute();
         return  $statement->fetchAll(PDO::FETCH_CLASS, $class);
     }
-    public function verifyUser($class, $table,$username, $email)
+    public function verifyUser($class, $table, $username, $email)
     {
-        $statement = $this->pdo->prepare("SELECT username, email, id FROM $table WHERE email= :email OR username= :username;");
+        $statement = $this->pdo->prepare("SELECT username, email FROM $table WHERE username= :username OR  email= :email;");
         $statement->bindParam(':username', $username);
         $statement->bindParam(':email', $email);
         $statement->execute();
@@ -25,6 +25,13 @@ class Query
     public function selectAll($table, $class)
     {
         $statement = $this->pdo->prepare("SELECT * FROM $table");
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_CLASS, $class);
+    }
+    public function selectUsersTasks($table, $class, $userid)
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM $table WHERE userid= :userid");
+        $statement->bindParam(':userid', $userid);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_CLASS, $class);
     }
@@ -42,11 +49,12 @@ class Query
         $statement->bindParam(':password', $password);
         $statement->execute();
     }
-    public function addTask($table, $description, $completed)
+    public function addTask($table, $description, $completed, $userid)
     {
-        $statement = $this->pdo->prepare("INSERT INTO $table (`description`, `completed`) VALUES (:description, :completed);");
+        $statement = $this->pdo->prepare("INSERT INTO $table (`description`, `completed`, `userid`) VALUES (:description, :completed, :userid);");
         $statement->bindParam(':description', $description);
         $statement->bindParam(':completed', $completed);
+        $statement->bindParam(':userid', $userid);
         $statement->execute();
     }
     public function updateTask($table, $description, $completed, $id)

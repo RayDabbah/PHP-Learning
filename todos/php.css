@@ -238,3 +238,19 @@ i {
   color: green;
   text-shadow: 2px 2px 2px gray;
 }
+textarea::-webkit-input-placeholder{
+  text-align: center;
+  font-size: 1.5em;  
+  height: 200px;
+  line-height: 200px;
+  white-space: nowrap;
+  font-weight: 900;
+}
+textarea::-moz-placeholder{
+  font-weight: 900;
+  text-align: center;
+  font-size: 1.5em;  
+  height: 200px;
+  line-height: 200px;
+  white-space: nowrap;
+}
