@@ -34,7 +34,7 @@
     
  </ul>   
  <form id="todoForm" action="/task" method="POST">
-                <textarea name="description" id="desc" placeholder="Enter your Todo here!" cols="30" rows="10"></textarea>
+                <textarea name="description" id="desc" placeholder="Enter your Todo here!" cols="40" rows="10"></textarea>
         <p>Completed? </p>
         <label class="radioLabel" for="false">No </label>
                 <input type="radio" id="false" name="completed" value="0" checked="checked"><br>
