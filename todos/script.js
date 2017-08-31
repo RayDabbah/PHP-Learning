@@ -56,15 +56,14 @@ for (let i = 0; i < deleteTodo.length; i++) {
 }
 
 // Update completed status of toDo when user clicks on it.
-
-for (let i = 0; i < deleteTodo.length; i++) {
-  todoLi[i].addEventListener('click', () => {
+Array.from(todoLi).forEach((todo, i)=>{
+  todo.addEventListener('click', () => {
     deleteTodo[i].action = '/update';
     completed[i].value == 0 ? completed[i].value = 1 : completed[i].value = 0;
     deleteTodo[i].submit();
     deleteTodo[i].action = '/delete';
   })
-}
+})
 
 //Update the content and/or the completed status of the todo. 
 
