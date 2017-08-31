@@ -4,7 +4,7 @@ var toDo = document.querySelectorAll('.deleteTodo li');
 const submit = document.getElementById('submit');
 var todoField = document.getElementById("desc");
 var todoSpan = document.querySelectorAll("#todoList span");
-var todoLi = document.querySelectorAll("#todoList li");
+var todoLi = Array.from(document.querySelectorAll("#todoList li"));
 var completed = document.getElementsByClassName('completed');
 const todoForm = document.getElementById('todoForm');
 const pens = Array.from(document.querySelectorAll('.pen'));
@@ -24,15 +24,13 @@ Array.from(document.getElementsByClassName("delete")).forEach(function (deleted)
 });
 
 // Toggle the color and strikethrough when ckicking on the todo.
-
-for (let i = 0; i <= todoSpan.length - 1; i++) {
-  todoLi[i].addEventListener("click", e => {
+todoLi.forEach((todo, i)=>{
+  todo.addEventListener("click", e => {
     todoSpan[i].classList.toggle("crossedout");
-    todoLi[i].classList.toggle("linethrough");
-    todoLi[i].classList.toggle("incompleteTodo");
-  }, false
-  );
-}
+    todo.classList.toggle("linethrough");
+    todo.classList.toggle("incompleteTodo");
+  }, false);
+})
 
 // Disable the submit button if there's no text in the input.
 
@@ -56,7 +54,7 @@ for (let i = 0; i < deleteTodo.length; i++) {
 }
 
 // Update completed status of toDo when user clicks on it.
-Array.from(todoLi).forEach((todo, i)=>{
+todoLi.forEach((todo, i)=>{
   todo.addEventListener('click', () => {
     deleteTodo[i].action = '/update';
     completed[i].value == 0 ? completed[i].value = 1 : completed[i].value = 0;
