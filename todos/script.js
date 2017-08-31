@@ -1,5 +1,5 @@
 var deleteTodo = document.getElementsByClassName('deleteTodo');
-var deleteGarbage = document.getElementsByClassName('delete');
+var deleteGarbage = Array.from(document.getElementsByClassName('delete'));
 var toDo = document.querySelectorAll('.deleteTodo li');
 const submit = document.getElementById('submit');
 var todoField = document.getElementById("desc");
@@ -44,16 +44,16 @@ todoField.addEventListener("input", () => {
 });
 
 // Delete todo when clicking on the garbage icon.
-
-for (let i = 0; i < deleteTodo.length; i++) {
-  deleteGarbage[i].addEventListener('click', (e) => {
+deleteGarbage.forEach((deleteCan, i) =>{
+  deleteCan.addEventListener('click', (e) => {
     setTimeout(() => {
       deleteTodo[i].submit();
     }, 400);
-  });
-}
+  })
+})
 
 // Update completed status of toDo when user clicks on it.
+
 todoLi.forEach((todo, i)=>{
   todo.addEventListener('click', () => {
     deleteTodo[i].action = '/update';
