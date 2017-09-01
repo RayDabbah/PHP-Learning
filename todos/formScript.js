@@ -48,7 +48,7 @@ function toggleLogin(switchFormType) {
         logIn.textContent = 'Click here to log in';
         confirmPass.type = 'password';
         confirmPassLabel.style.display = 'block';
-        logInInputs  = '';
+        logInInputs = '';
         toggle = false;
     }
 }
@@ -57,6 +57,7 @@ function toggleLogin(switchFormType) {
 
 submit.disabled = true;
 newUserForm.addEventListener('input', listenerFunction);
+newUserForm.addEventListener('input', () => submit.disabled = false);
 login.addEventListener('click', listenerFunction);
 
 function enableSubmit() {
@@ -67,5 +68,16 @@ function enableSubmit() {
 
 function listenerFunction() {
     requiredInputs = logInInputs || allInputs;
-    enableSubmit() ? submit.disabled = false : submit.disabled = true;
+    if (enableSubmit()) {
+        newUserForm.removeEventListener('submit', noSubmit);
+    } else {
+        disableSubmit();
+    }
+}
+
+function disableSubmit() {
+    newUserForm.addEventListener('submit', noSubmit)
+}
+function noSubmit(e) {
+    e.preventDefault();
 }
