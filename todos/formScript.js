@@ -8,10 +8,13 @@ var confirmPassLabel = document.querySelector('label[for=Confirmpassword]');
 var header = document.getElementById('header');
 var submit = document.querySelector('input[type=submit]');
 var toggle = false;
-console.log(window.location.pathname);
+const allInputs = Array.from(document.querySelectorAll('input'));
+var logInInputs;
+var requiredInputs;
+
 // Make sure that password confirm is the same as password
 
-newUserForm.addEventListener('submit', (e) => {
+newUserForm.addEventListener('submit', e => {
     if (pass.value != confirmPass.value && !toggle) {
         errorMess.textContent = 'Passwords do not match!';
         e.preventDefault();
@@ -35,17 +38,17 @@ function toggleLogin(switchFormType) {
         loginMessage.textContent = 'New guest? ';
         logIn.textContent = 'Click here to sign up!';
         confirmPass.type = 'hidden';
-        confirmPass.value = pass.value;
         confirmPassLabel.style.display = 'none';
+        logInInputs = allInputs.filter(field => field.type !== 'hidden');
         toggle = true;
     } else {
-        confirmPass.value = '';
         header.textContent = 'Sign up';
         newUserForm.action = '/signup';
         loginMessage.textContent = 'Already a member?';
         logIn.textContent = 'Click here to log in';
         confirmPass.type = 'password';
         confirmPassLabel.style.display = 'block';
+        logInInputs  = '';
         toggle = false;
     }
 }
@@ -56,16 +59,13 @@ submit.disabled = true;
 newUserForm.addEventListener('input', listenerFunction);
 login.addEventListener('click', listenerFunction);
 
-
 function enableSubmit() {
-    return Array.from(document.querySelectorAll('input')).every(input => {
-        // console.log(input.value);
+    return requiredInputs.every(input => {
         return input.value;
     });
 }
 
 function listenerFunction() {
-    // enableSubmit();
-    if (toggle) confirmPass.value = pass.value;
+    requiredInputs = logInInputs || allInputs;
     enableSubmit() ? submit.disabled = false : submit.disabled = true;
 }
