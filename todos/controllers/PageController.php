@@ -95,4 +95,9 @@ class PageController
             return views('nameForm', ['message' => $message]);
         }
     }
+    public function ajax()
+    {
+        $tasks = App::get('database')->selectUsersTasks('todos', 'Task', $_SESSION['id']);
+        echo json_encode($tasks);
+    }
 }

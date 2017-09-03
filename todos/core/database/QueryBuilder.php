@@ -30,7 +30,7 @@ class Query
     }
     public function selectUsersTasks($table, $class, $userid)
     {
-        $statement = $this->pdo->prepare("SELECT * FROM $table WHERE userid= :userid");
+        $statement = $this->pdo->prepare("SELECT description, completed, id FROM $table WHERE userid= :userid");
         $statement->bindParam(':userid', $userid);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_CLASS, $class);

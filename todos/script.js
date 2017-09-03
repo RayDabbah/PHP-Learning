@@ -24,7 +24,7 @@ Array.from(document.getElementsByClassName("delete")).forEach(function (deleted)
 });
 
 // Toggle the color and strikethrough when ckicking on the todo.
-todoLi.forEach((todo, i)=>{
+todoLi.forEach((todo, i) => {
   todo.addEventListener("click", e => {
     todoSpan[i].classList.toggle("crossedout");
     todo.classList.toggle("linethrough");
@@ -44,7 +44,7 @@ todoField.addEventListener("input", () => {
 });
 
 // Delete todo when clicking on the garbage icon.
-deleteGarbage.forEach((deleteCan, i) =>{
+deleteGarbage.forEach((deleteCan, i) => {
   deleteCan.addEventListener('click', (e) => {
     setTimeout(() => {
       deleteTodo[i].submit();
@@ -54,7 +54,7 @@ deleteGarbage.forEach((deleteCan, i) =>{
 
 // Update completed status of toDo when user clicks on it.
 
-todoLi.forEach((todo, i)=>{
+todoLi.forEach((todo, i) => {
   todo.addEventListener('click', () => {
     deleteTodo[i].action = '/update';
     completed[i].value == 0 ? completed[i].value = 1 : completed[i].value = 0;
@@ -93,4 +93,11 @@ reset.addEventListener('click', () => {
   submit.disabled = true;
   desc.placeholder = "Enter your Todo here!";
 });
-
+  var allUserTodos = new XMLHttpRequest();
+  allUserTodos.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status === 200) {
+      console.log(this.responseText);
+    }
+  }
+  allUserTodos.open('GET', '/ajax', true);
+  allUserTodos.send();
