@@ -8,7 +8,7 @@ class PageController
             {
             return header('Location: /form');
         };
-        $tasks = App::get('database')->selectUsersTasks('todos', 'Task', $_SESSION['id']);
+        // $tasks = App::get('database')->selectUsersTasks('todos', 'Task', $_SESSION['id']);
         views('index.view', compact('tasks'));
     }
 
