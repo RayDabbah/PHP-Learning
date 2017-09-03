@@ -1,33 +1,6 @@
 <?php include 'partials/header.php' ?>
 <div class="flex">
  <ul id="todoList">
-        <!-- foreach ($tasks as $todo) : ?>
-    <form class="deleteTodo" action="/delete" method="POST">
-             <?php if (!$todo->completed) : ?>
-                       <li class="incompleteTodo">
-                                <img class="delete" src="delete-basket.png">
-                                <span>
-                                        <?= $todo->description ?>
-                                </span>
-                
-              <?php  else : ?>
-                        <li class="linethrough">
-                                <img class="delete" src="delete-basket.png">
-                                <span class="crossedout">
-                                        <?= $todo->description ?>
-                                </span>
-                <?php endif; ?>
-                <img class="pen" src="pen.png">
-        </li>
-                
-              <input type="hidden" name="description" value=" <?= $todo->description ?>">
-              <input class="completed" type="hidden" name="completed" value=" <?= $todo->completed ?>">
-              <input type="hidden" name="id" value=" <?= $todo->id ?>">-->
-                
-        
-       
-            
-    
  </ul>   
  <form id="todoForm" action="/task" method="POST">
                 <textarea name="description" id="desc" placeholder="Enter your Todo here!" cols="40" rows="10"></textarea>
