@@ -1,10 +1,7 @@
 <?php include 'partials/header.php' ?>
 <div class="flex">
  <ul id="todoList">
-    <?php if (empty($tasks)) {
-                echo '<li>Your Todos will go here.</li>';
-        };
-        foreach ($tasks as $todo) : ?>
+        <!-- foreach ($tasks as $todo) : ?>
     <form class="deleteTodo" action="/delete" method="POST">
              <?php if (!$todo->completed) : ?>
                        <li class="incompleteTodo">
@@ -25,9 +22,8 @@
                 
               <input type="hidden" name="description" value=" <?= $todo->description ?>">
               <input class="completed" type="hidden" name="completed" value=" <?= $todo->completed ?>">
-              <input type="hidden" name="id" value=" <?= $todo->id ?>">
-                </form>
-        <?php endforeach; ?>
+              <input type="hidden" name="id" value=" <?= $todo->id ?>">-->
+                
         
        
             

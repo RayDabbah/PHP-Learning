@@ -11,6 +11,7 @@ const pens = Array.from(document.querySelectorAll('.pen'));
 const reset = document.getElementById('reset');
 var done = document.getElementById('true');
 var notDone = document.getElementById('false');
+var todoList = document.getElementById('todoList');
 
 //Prevent the clicking on the trash bin from clicking on the <li> and staying only on the image.
 // Change the class of the image to animate when clicked on.
@@ -93,11 +94,40 @@ reset.addEventListener('click', () => {
   submit.disabled = true;
   desc.placeholder = "Enter your Todo here!";
 });
-  var allUserTodos = new XMLHttpRequest();
-  allUserTodos.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status === 200) {
-      console.log(this.responseText);
+var allUserTodos = new XMLHttpRequest();
+allUserTodos.onreadystatechange = function () {
+  if (this.readyState == 4 && this.status === 200) {
+    var response = JSON.parse(this.responseText);
+    // console.log(JSON.parse(this.responseText));
+    // todoList.innerHTML = response[4].description;
+    if (!response) {
+      todoList.innerHTML = '<li>Your Todos will go here.</li>';
+    } else {
+      response.forEach((listItem => {
+        console.log(listItem.completed == 0);
+        var complete = 'class="linethrough"';
+        var incomplete = 'class="incompleteTodo"';
+        var crossedout = 'crossedout';
+        var notCrossedOut = '';
+        todoList.innerHTML += `<form class="deleteTodo" action="/delete" method="POST">
+        <li ${listItem.completed == 0 ? complete : incomplete}>
+        <img class="delete" src="delete-basket.png">
+          <span class="${listItem.completed == 0 ? crossedout : notCrossedOut }">${listItem.description}</span>
+          <img class="pen" src="pen.png">
+        </li>
+        </form> `;
+      })
     }
   }
-  allUserTodos.open('GET', '/ajax', true);
-  allUserTodos.send();
+}
+allUserTodos.open('GET', '/ajax', true);
+allUserTodos.send();
+
+
+
+//           <input type="hidden" name="description" value=" <?= $todo->description ?>">
+//             <input class="completed" type="hidden" name="completed" value=" <?= $todo->completed ?>">
+//               <input type="hidden" name="id" value=" <?= $todo->id ?>">
+//     </form>
+//               <?php endforeach; ?>
+
