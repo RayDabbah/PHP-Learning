@@ -65,13 +65,12 @@ class PageController
     public function delete()
     {
         App::get('database')->delete('todos', $_POST['id']);
-        // header('Location: /');
         $this->ajax();
     }
     public function update()
     {
         App::get('database')->updateTask('todos', $_POST['description'], $_POST['completed'], $_POST['id']);
-        header('Location: /');
+        $this->ajax();
     }
     public function logOut()
     {

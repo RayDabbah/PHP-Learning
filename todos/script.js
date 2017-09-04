@@ -1,15 +1,6 @@
 const todoField = document.getElementById("desc");
 var todoList = document.getElementById('todoList');
-var response;
-let todoLi;
-let deleteGarbage;
-let pens;
-// var allUserTodos = new XMLHttpRequest();
-// allUserTodos.onreadystatechange = function () {
-//   if (this.readyState == 4 && this.status === 200) {
-//     var response = JSON.parse(this.responseText);
-//     // console.log(JSON.parse(this.responseText));
-//     // todoList.innerHTML = response[4].description;
+let response, todoLi, deleteGarbage, pens, done, notDone, todoSpan, deleteTodo, completed;
 response = ajaxReq('GET', '/ajax');
 function renderList() {
   if (!response) {
@@ -32,18 +23,18 @@ function renderList() {
                     <input type="hidden" name="id" value=" ${listItem.id}">
                     </div> `;
 
-      const deleteTodo = document.getElementsByClassName('deleteTodo');
+      deleteTodo = document.getElementsByClassName('deleteTodo');
       deleteGarbage = Array.from(document.getElementsByClassName('delete'));
       const toDo = document.querySelectorAll('.deleteTodo li');
       const submit = document.getElementById('submit');
-      const todoSpan = document.querySelectorAll("#todoList span");
+      todoSpan = document.querySelectorAll("#todoList span");
       todoLi = Array.from(document.querySelectorAll("#todoList li"));
-      const completed = document.getElementsByClassName('completed');
+      completed = document.getElementsByClassName('completed');
       const todoForm = document.getElementById('todoForm');
       pens = Array.from(document.querySelectorAll('.pen'));
       const reset = document.getElementById('reset');
-      const done = document.getElementById('true');
-      const notDone = document.getElementById('false');
+      done = document.getElementById('true');
+      notDone = document.getElementById('false');
 
     })
     //Prevent the clicking on the trash bin from clicking on the <li> and staying only on the image.
@@ -89,10 +80,8 @@ function renderList() {
 
     todoLi.forEach((todo, i) => {
       todo.addEventListener('click', () => {
-        deleteTodo[i].action = '/update';
-        completed[i].value == 0 ? completed[i].value = 1 : completed[i].value = 0;
-        deleteTodo[i].submit();
-        deleteTodo[i].action = '/delete';
+        response[i].completed == 0 ? response[i].completed = 1 : response[i].completed = 0;
+        ajaxReq('POST', 'update', response[i]);
       })
     })
 
@@ -145,6 +134,7 @@ function ajaxReq(method, action, params) {
   if (method === 'POST') {
     ajaxTodo.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     posts = `description=${params.description}&completed=${params.completed}&id=${params.id}`
+    console.log(posts)
   } else {
     params = null;
   }
