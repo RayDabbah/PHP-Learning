@@ -89,8 +89,7 @@ function renderList() {
         todoField.value = e.target.parentNode.textContent.trim();
         todoField.focus();
         if (response[i].completed == 0) {
-          notDone.checked = true;
-          done.checked = false;
+          resetComplete()
         } else {
           done.checked = true;
           notDone.checked = false;
@@ -105,6 +104,7 @@ function renderList() {
             done.checked ? updatingTodo.completed = 1 : updatingTodo.completed = 0;
             ajaxReq('POST', '/update', updatingTodo);
             todoField.value = '';
+            resetComplete();
             submit.value = 'Add your Todo!'
             todoField.placeholder = "Enter your Todo here!";
             submit.removeEventListener('click', updateTodo)
@@ -118,19 +118,18 @@ function renderList() {
 
 submit.addEventListener('click', function () {
   if (submit.value == 'Add your Todo!') {
-
     let input = {};
     input.description = todoField.value;
     done.checked ? input.completed = 1 : input.completed = 0;
     input.id = '';
     ajaxReq('POST', '/task', input);
     todoField.value = '';
+    resetComplete()
   }
 })
 reset.addEventListener('click', () => {
   todoField.value = '';
-  notDone.checked = true;
-  done.checked = false;
+  resetComplete()
   submit.disabled = true;
   todoField.placeholder = "Enter your Todo here!";
 });
@@ -152,4 +151,10 @@ function ajaxReq(method, action, params) {
     params = null;
   }
   ajaxTodo.send(posts);
+}
+
+// reset the radio box to no
+function resetComplete() {
+  notDone.checked = true;
+  done.checked = false;
 }
