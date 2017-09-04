@@ -18,9 +18,6 @@ function renderList() {
         <span class="${listItem.completed == 0 ? notCrossedOut : crossedout}">${listItem.description}</span>
         <img class="pen" src="pen.png">
         </li>
-        <input type="hidden" name="description" value="${listItem.description}">
-                    <input class="completed" type="hidden" name="completed" value="${listItem.completed}">
-                    <input type="hidden" name="id" value=" ${listItem.id}">
                     </div> `;
 
       deleteTodo = document.getElementsByClassName('deleteTodo');
@@ -81,22 +78,18 @@ function renderList() {
     todoLi.forEach((todo, i) => {
       todo.addEventListener('click', () => {
         response[i].completed == 0 ? response[i].completed = 1 : response[i].completed = 0;
-        ajaxReq('POST', 'update', response[i]);
+        ajaxReq('POST', '/update', response[i]);
       })
     })
 
     //Update the content and/or the completed status of the todo. 
 
-    pens.forEach(pen => {
+    pens.forEach((pen, i) => {
       pen.addEventListener('click', e => {
         e.stopPropagation();
         todoField.value = e.target.parentNode.textContent.trim();
         todoField.focus();
-        const id = document.createElement('input');
-        id.type = 'hidden';
-        id.name = 'id';
-        id.value = e.target.parentNode.parentNode.childNodes[7].value;
-        if (e.target.parentNode.parentNode.childNodes[5].value == 0) {
+        if (response[i].completed == 0) {
           notDone.checked = true;
           done.checked = false;
         } else {
@@ -104,9 +97,13 @@ function renderList() {
           notDone.checked = false;
         }
         submit.value = 'Update!'
-        todoForm.appendChild(id);
-        todoForm.action = '/update';
-        desc.placeholder = "Update your Todo!";
+        todoField.placeholder = "Update your Todo!";
+        submit.addEventListener('click', () => {
+          response[i].description = todoField.value;
+          done.checked ? response[i].completed = 1 : response[i].completed = 0;
+          ajaxReq('POST', '/update', response[i]);
+          submit.value = 'Add your Todo!'
+        })
       }, false);
     })
   }
@@ -114,12 +111,8 @@ function renderList() {
 reset.addEventListener('click', () => {
   todoForm.action = '/task';
   submit.disabled = true;
-  desc.placeholder = "Enter your Todo here!";
+  todoField.placeholder = "Enter your Todo here!";
 });
-// deleteTodo.addEventListener('click')
-
-// allUserTodos.open('GET', '/ajax', true);
-// allUserTodos.send();
 
 function ajaxReq(method, action, params) {
   let posts;

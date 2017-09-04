@@ -2,7 +2,7 @@
 <div class="flex">
  <ul id="todoList">
  </ul>   
- <form id="todoForm" action="/task" method="POST">
+ <div id="todoForm" action="/task" method="POST">
                 <textarea name="description" id="desc" placeholder="Enter your Todo here!" cols="40" rows="10"></textarea>
         <p>Completed? </p>
         <label class="radioLabel" for="false">No </label>
@@ -13,7 +13,7 @@
                         <input type="submit" id="submit" value="Add your Todo!">
                         <input id="reset" value="Cancel" type="reset">
                 </div>
- </form>
+ </div>
 </div>
  <script src="script.js"></script>
 <?php include 'partials/footer.php' ?>
