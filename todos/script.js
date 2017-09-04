@@ -17,7 +17,6 @@ function renderList() {
   } else {
     todoList.innerHTML = '';
     response.forEach(listItem => {
-      // console.log(listItem);
       const complete = 'class="linethrough"';
       const incomplete = 'class="incompleteTodo"';
       const crossedout = 'crossedout';
@@ -81,7 +80,6 @@ function renderList() {
     deleteGarbage.forEach((deleteCan, i) => {
       deleteCan.addEventListener('click', (e) => {
         setTimeout(() => {
-          console.log(response[i])
           ajaxReq('POST', '/delete', response[i]);
         }, 400);
       })
@@ -129,7 +127,6 @@ reset.addEventListener('click', () => {
   submit.disabled = true;
   desc.placeholder = "Enter your Todo here!";
 });
-// console.log(deleteTodo)
 // deleteTodo.addEventListener('click')
 
 // allUserTodos.open('GET', '/ajax', true);
@@ -140,7 +137,6 @@ function ajaxReq(method, action, params) {
   ajaxTodo = new XMLHttpRequest()
   ajaxTodo.onreadystatechange = function () {
     if (this.readyState == 4 && this.status === 200) {
-      console.log(`This is the response:  ${this.responseText}`)
       response = JSON.parse(this.responseText);
       renderList();
     }
@@ -149,7 +145,6 @@ function ajaxReq(method, action, params) {
   if (method === 'POST') {
     ajaxTodo.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     posts = `description=${params.description}&completed=${params.completed}&id=${params.id}`
-    console.log(posts)
   } else {
     params = null;
   }
