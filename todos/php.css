@@ -85,6 +85,7 @@ input[type='submit'] {
 }
 input[type='radio']{
     font-size: 3em;
+    box-shadow: none;
 }
 
 nav {

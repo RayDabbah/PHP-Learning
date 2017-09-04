@@ -1,6 +1,11 @@
 const todoField = document.getElementById("desc");
+const submit = document.getElementById('submit');
 var todoList = document.getElementById('todoList');
-let response, todoLi, deleteGarbage, pens, done, notDone, todoSpan, deleteTodo, completed;
+const reset = document.getElementById('reset');
+const done = document.getElementById('true');
+const notDone = document.getElementById('false');
+console.log(completed.value)
+let response, todoLi, deleteGarbage, pens, todoSpan, deleteTodo, completed;
 response = ajaxReq('GET', '/ajax');
 function renderList() {
   if (!response) {
@@ -23,15 +28,11 @@ function renderList() {
       deleteTodo = document.getElementsByClassName('deleteTodo');
       deleteGarbage = Array.from(document.getElementsByClassName('delete'));
       const toDo = document.querySelectorAll('.deleteTodo li');
-      const submit = document.getElementById('submit');
       todoSpan = document.querySelectorAll("#todoList span");
       todoLi = Array.from(document.querySelectorAll("#todoList li"));
       completed = document.getElementsByClassName('completed');
       const todoForm = document.getElementById('todoForm');
       pens = Array.from(document.querySelectorAll('.pen'));
-      const reset = document.getElementById('reset');
-      done = document.getElementById('true');
-      notDone = document.getElementById('false');
 
     })
     //Prevent the clicking on the trash bin from clicking on the <li> and staying only on the image.
@@ -108,8 +109,19 @@ function renderList() {
     })
   }
 }
+
+submit.addEventListener('click', function(){
+  if (submit.value = 'Enter your Todo here!'){
+    let input = [];
+    input.push(todoField.value);
+    input.push();
+    
+  }
+})
 reset.addEventListener('click', () => {
-  todoForm.action = '/task';
+  todoField.value = '';
+  notDone.checked = true;
+  done.checked = false;
   submit.disabled = true;
   todoField.placeholder = "Enter your Todo here!";
 });

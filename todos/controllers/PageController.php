@@ -60,7 +60,8 @@ class PageController
     public function task()
     {
         App::get('database')->addTask('todos', $_POST['description'], $_POST['completed'], $_SESSION['id']);
-        header('Location: /');
+        // header('Location: /');
+        $this->ajax();
     }
     public function delete()
     {
