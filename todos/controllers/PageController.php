@@ -65,7 +65,8 @@ class PageController
     public function delete()
     {
         App::get('database')->delete('todos', $_POST['id']);
-        header('Location: /');
+        // header('Location: /');
+        $this->ajax();
     }
     public function update()
     {
