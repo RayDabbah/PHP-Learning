@@ -23,7 +23,7 @@ function renderList() {
       <img class="pen" src="pen.png">
       </li>
       </div> `;
-      
+
       deleteTodo = document.getElementsByClassName('deleteTodo');
       deleteGarbage = Array.from(document.getElementsByClassName('delete'));
       const toDo = document.querySelectorAll('.deleteTodo li');
@@ -97,25 +97,34 @@ function renderList() {
         }
         submit.value = 'Update!'
         todoField.placeholder = "Update your Todo!";
-        submit.addEventListener('click', () => {
-          response[i].description = todoField.value;
-          done.checked ? response[i].completed = 1 : response[i].completed = 0;
-          ajaxReq('POST', '/update', response[i]);
-          todoField.value = '';
-          submit.value = 'Add your Todo!'
-          todoField.placeholder = "Enter your Todo here!";
-        })
+        if (todoField.placeholder = "Update your Todo!") {
+          submit.addEventListener('click', updateTodo)
+          function updateTodo() {
+            let updatingTodo = response[i]
+            updatingTodo.description = todoField.value;
+            done.checked ? updatingTodo.completed = 1 : updatingTodo.completed = 0;
+            ajaxReq('POST', '/update', updatingTodo);
+            todoField.value = '';
+            submit.value = 'Add your Todo!'
+            todoField.placeholder = "Enter your Todo here!";
+            submit.removeEventListener('click', updateTodo)
+          }
+
+        }
       }, false);
     })
   }
 }
 
-submit.addEventListener('click', function(){
-  if (submit.value = 'Enter your Todo here!'){
-    let input = [];
-    input.push(todoField.value);
-    input.push();
-    
+submit.addEventListener('click', function () {
+  if (submit.value == 'Add your Todo!') {
+
+    let input = {};
+    input.description = todoField.value;
+    done.checked ? input.completed = 1 : input.completed = 0;
+    input.id = '';
+    ajaxReq('POST', '/task', input);
+    todoField.value = '';
   }
 })
 reset.addEventListener('click', () => {
@@ -139,7 +148,6 @@ function ajaxReq(method, action, params) {
   if (method === 'POST') {
     ajaxTodo.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     posts = `description=${params.description}&completed=${params.completed}&id=${params.id}`
-    console.log(posts)
   } else {
     params = null;
   }
