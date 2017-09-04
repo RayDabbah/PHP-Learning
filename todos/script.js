@@ -4,7 +4,6 @@ var todoList = document.getElementById('todoList');
 const reset = document.getElementById('reset');
 const done = document.getElementById('true');
 const notDone = document.getElementById('false');
-console.log(completed.value)
 let response, todoLi, deleteGarbage, pens, todoSpan, deleteTodo, completed;
 response = ajaxReq('GET', '/ajax');
 function renderList() {
@@ -18,19 +17,18 @@ function renderList() {
       const crossedout = 'crossedout';
       const notCrossedOut = '';
       todoList.innerHTML += `<div class="deleteTodo">
-        <li ${listItem.completed == 0 ? incomplete : complete}>
-        <img class="delete" src="delete-basket.png">
-        <span class="${listItem.completed == 0 ? notCrossedOut : crossedout}">${listItem.description}</span>
-        <img class="pen" src="pen.png">
-        </li>
-                    </div> `;
-
+      <li ${listItem.completed == 0 ? incomplete : complete}>
+      <img class="delete" src="delete-basket.png">
+      <span class="${listItem.completed == 0 ? notCrossedOut : crossedout}">${listItem.description}</span>
+      <img class="pen" src="pen.png">
+      </li>
+      </div> `;
+      
       deleteTodo = document.getElementsByClassName('deleteTodo');
       deleteGarbage = Array.from(document.getElementsByClassName('delete'));
       const toDo = document.querySelectorAll('.deleteTodo li');
       todoSpan = document.querySelectorAll("#todoList span");
       todoLi = Array.from(document.querySelectorAll("#todoList li"));
-      completed = document.getElementsByClassName('completed');
       const todoForm = document.getElementById('todoForm');
       pens = Array.from(document.querySelectorAll('.pen'));
 
@@ -103,7 +101,9 @@ function renderList() {
           response[i].description = todoField.value;
           done.checked ? response[i].completed = 1 : response[i].completed = 0;
           ajaxReq('POST', '/update', response[i]);
+          todoField.value = '';
           submit.value = 'Add your Todo!'
+          todoField.placeholder = "Enter your Todo here!";
         })
       }, false);
     })
