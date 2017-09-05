@@ -86,7 +86,8 @@ function renderList() {
     pens.forEach((pen, i) => {
       pen.addEventListener('click', e => {
         e.stopPropagation();
-        todoField.value = e.target.parentNode.textContent.trim();
+        let updatingTodo = response[i];
+        todoField.value = updatingTodo.description;
         todoField.focus();
         if (response[i].completed == 0) {
           resetComplete()
@@ -99,7 +100,6 @@ function renderList() {
         if (todoField.placeholder = "Update your Todo!") {
           submit.addEventListener('click', updateTodo)
           function updateTodo() {
-            let updatingTodo = response[i]
             updatingTodo.description = todoField.value;
             done.checked ? updatingTodo.completed = 1 : updatingTodo.completed = 0;
             ajaxReq('POST', '/update', updatingTodo);
