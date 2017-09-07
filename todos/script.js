@@ -7,8 +7,8 @@ const notDone = document.getElementById('false');
 let response, todoLi, deleteGarbage, pens, todoSpan, deleteTodo, completed, updatingTodo;
 response = ajaxReq('GET', '/ajax');
 function renderList() {
-  if (!response) {
-    todoList.innerHTML = '<li>Your Todos will go here.</li>';
+  if (!response[0]) {
+    todoList.innerHTML = '<li id="empty">Your Todos will go here.</li>';
   } else {
     todoList.innerHTML = '';
     response.forEach(listItem => {
@@ -45,13 +45,14 @@ function renderList() {
     });
 
     // Toggle the color and strikethrough when ckicking on the todo.
-    todoLi.forEach((todo, i) => {
-      todo.addEventListener("click", e => {
-        todoSpan[i].classList.toggle("crossedout");
-        todo.classList.toggle("linethrough");
-        todo.classList.toggle("incompleteTodo");
-      }, false);
-    })
+      todoLi.forEach((todo, i) => {
+        todo.addEventListener("click", e => {
+          todoSpan[i].classList.toggle("crossedout");
+          todo.classList.toggle("linethrough");
+          todo.classList.toggle("incompleteTodo");
+        }, false);
+      })
+    
 
     // Disable the submit button if there's no text in the input.
 
