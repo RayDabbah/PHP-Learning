@@ -1,10 +1,10 @@
 const todoField = document.getElementById("desc");
 const submit = document.getElementById('submit');
-var todoList = document.getElementById('todoList');
+let todoList = document.getElementById('todoList');
 const reset = document.getElementById('reset');
 const done = document.getElementById('true');
 const notDone = document.getElementById('false');
-let response, todoLi, deleteGarbage, pens, todoSpan, deleteTodo, completed;
+let response, todoLi, deleteGarbage, pens, todoSpan, deleteTodo, completed, updatingTodo;
 response = ajaxReq('GET', '/ajax');
 function renderList() {
   if (!response) {
@@ -86,7 +86,8 @@ function renderList() {
     pens.forEach((pen, i) => {
       pen.addEventListener('click', e => {
         e.stopPropagation();
-        let updatingTodo = response[i];
+        // submit.removeEventListener('click', updateTodo)
+        updatingTodo = response[i];
         todoField.value = updatingTodo.description;
         todoField.focus();
         if (response[i].completed == 0) {
@@ -99,17 +100,6 @@ function renderList() {
         todoField.placeholder = "Update your Todo!";
         if (todoField.placeholder = "Update your Todo!") {
           submit.addEventListener('click', updateTodo)
-          function updateTodo() {
-            updatingTodo.description = todoField.value;
-            done.checked ? updatingTodo.completed = 1 : updatingTodo.completed = 0;
-            ajaxReq('POST', '/update', updatingTodo);
-            todoField.value = '';
-            resetComplete();
-            submit.value = 'Add your Todo!'
-            todoField.placeholder = "Enter your Todo here!";
-            submit.removeEventListener('click', updateTodo)
-          }
-
         }
       }, false);
     })
@@ -157,4 +147,15 @@ function ajaxReq(method, action, params) {
 function resetComplete() {
   notDone.checked = true;
   done.checked = false;
+}
+
+function updateTodo() {
+  updatingTodo.description = todoField.value;
+  done.checked ? updatingTodo.completed = 1 : updatingTodo.completed = 0;
+  ajaxReq('POST', '/update', updatingTodo);
+  todoField.value = '';
+  resetComplete();
+  submit.value = 'Add your Todo!'
+  todoField.placeholder = "Enter your Todo here!";
+  // updatingTodo = null;
 }
