@@ -87,7 +87,6 @@ function renderList() {
     pens.forEach((pen, i) => {
       pen.addEventListener('click', e => {
         e.stopPropagation();
-        // submit.removeEventListener('click', updateTodo)
         updatingTodo = response[i];
         todoField.value = updatingTodo.description;
         todoField.focus();
@@ -109,6 +108,7 @@ function renderList() {
 
 submit.addEventListener('click', function () {
   if (submit.value == 'Add your Todo!') {
+    submit.removeEventListener('click', updateTodo)
     let input = {};
     input.description = todoField.value;
     done.checked ? input.completed = 1 : input.completed = 0;
