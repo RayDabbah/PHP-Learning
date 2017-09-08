@@ -18,9 +18,9 @@ function renderList() {
       const notCrossedOut = '';
       todoList.innerHTML += `<div class="deleteTodo">
       <li ${listItem.completed == 0 ? incomplete : complete}>
-      <img class="delete" src="delete-basket.png">
+      <img class="delete" draggable="false" src="delete-basket.png">
       <span class="${listItem.completed == 0 ? notCrossedOut : crossedout}">${listItem.description}</span>
-      <img class="pen" src="pen.png">
+      <img class="pen" draggable="false" src="pen.png">
       </li>
       </div> `;
 
