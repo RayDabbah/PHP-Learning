@@ -13,11 +13,11 @@
 </div>
 <form id="newUserForm" action="/signup"  method="POST">
 <label for="username">Name:</label>
-<input id="username" type="text" name="username"><br>
+<input id="username" type="text" tabindex="1" name="username"><br>
 <label for="email">Email: </label>
-<input id="email" type="email" name="email" value="<?php if(isset($error)){echo $_POST['email'];} ?>"><br>
+<input id="email" type="email" name="email" tabindex="2" value="<?php if(isset($error)){echo $_POST['email'];} ?>"><br>
 <label for="password">Password: </label>
-<input id="password" type="password" name="password" ><br>
+<input id="password" type="password" name="password" tabindex="3"><br>
 <label for="Confirmpassword">Confirm Password: </label>
 <input id="Confirmpassword" type="password" name="Confirmpassword"><br>
 <p id="error">
