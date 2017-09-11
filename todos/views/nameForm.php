@@ -19,11 +19,11 @@
 <label for="password">Password: </label>
 <input id="password" type="password" name="password" tabindex="3"><br>
 <label for="Confirmpassword">Confirm Password: </label>
-<input id="Confirmpassword" type="password" name="Confirmpassword"><br>
+<input id="Confirmpassword" type="password" tabindex="4" name="Confirmpassword"><br>
 <p id="error">
 <?= isset($message) ? $message : ''; ?>
 </p>
-<input type="submit" value="Welcome!!">
+<input type="submit" tabindex="5" value="Welcome!!">
 </form>
 
 <script src="formScript.js"></script>
