@@ -11,7 +11,8 @@ var toggle = false;
 const allInputs = Array.from(document.querySelectorAll('input'));
 var logInInputs;
 var requiredInputs;
-allInputs[1].focus = true;
+allInputs[0].focus = true;
+console.log(allinputs[0]);
 // Make sure that password confirm is the same as password
 
 newUserForm.addEventListener('submit', e => {
