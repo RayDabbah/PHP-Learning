@@ -27,7 +27,7 @@ toggleLogin(window.location.pathname === '/login');
 
 logIn.addEventListener('click', () => {
     errorMess.textContent = '';
-if(allInputs.slice(0, -1).every(input => !input.value)) allInputs[0].focus();
+    allInputs.find(input => !input.value).focus();
     toggleLogin(!toggle);
 });
 
