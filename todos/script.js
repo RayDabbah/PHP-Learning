@@ -142,6 +142,8 @@ function ajaxReq(method, action, params) {
     params = null;
   }
   ajaxTodo.send(posts);
+  console.log(action)
+  console.log(posts)
 }
 
 // reset the radio box to no

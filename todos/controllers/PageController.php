@@ -59,10 +59,12 @@ class PageController
     }
     public function task()
     {
-        App::get('database')->addTask('todos', $_POST['description'], $_POST['completed'], $_SESSION['id']);
-        if(!$_POST['description']){
+        // echo "This is before if:  $_POST[description]";
+        if(empty($_POST['description'])){
             return;
         }
+        // echo "After: $_POST[description]";
+        App::get('database')->addTask('todos', $_POST['description'], $_POST['completed'], $_SESSION['id']);
         $this->ajax();
     }
     public function delete()
@@ -72,10 +74,10 @@ class PageController
     }
     public function update()
     {
-        App::get('database')->updateTask('todos', $_POST['description'], $_POST['completed'], $_POST['id']);
-        if(!$_POST['description']){
+        if(empty($_POST['description'])){
             return;
         }
+        App::get('database')->updateTask('todos', $_POST['description'], $_POST['completed'], $_POST['id']);
         $this->ajax();
     }
     public function logOut()
