@@ -6,6 +6,7 @@ const done = document.getElementById('true');
 const notDone = document.getElementById('false');
 let response, todoLi, deleteGarbage, pens, todoSpan, deleteTodo, completed, updatingTodo;
 if (!todoField.value) submit.disabled = true;
+todoField.addEventListener("input", dontSubmit)
 response = ajaxReq('GET', '/ajax');
 function renderList() {
   if (!response[0]) {
@@ -58,13 +59,6 @@ function renderList() {
     // Disable the submit button if there's no text in the input.
 
     if (!todoField.value) submit.disabled = true;
-    todoField.addEventListener("input", () => {
-      if (!todoField.value) {
-        submit.disabled = true;
-      } else {
-        submit.disabled = false;
-      }
-    });
     // Delete todo when clicking on the garbage icon.
     deleteGarbage.forEach((deleteCan, i) => {
       deleteCan.addEventListener('click', (e) => {
@@ -160,4 +154,12 @@ function updateTodo() {
   submit.value = 'Add your Todo!'
   todoField.placeholder = "Enter your Todo here!";
   // updatingTodo = null;
+}
+
+function dontSubmit(){
+  if (!todoField.value) {
+    submit.disabled = true;
+  } else {
+    submit.disabled = false;
+  }
 }
