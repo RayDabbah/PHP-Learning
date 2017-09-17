@@ -5,6 +5,7 @@ const reset = document.getElementById('reset');
 const done = document.getElementById('true');
 const notDone = document.getElementById('false');
 let response, todoLi, deleteGarbage, pens, todoSpan, deleteTodo, completed, updatingTodo;
+if (!todoField.value) submit.disabled = true;
 response = ajaxReq('GET', '/ajax');
 function renderList() {
   if (!response[0]) {
@@ -142,8 +143,6 @@ function ajaxReq(method, action, params) {
     params = null;
   }
   ajaxTodo.send(posts);
-  console.log(action)
-  console.log(posts)
 }
 
 // reset the radio box to no
