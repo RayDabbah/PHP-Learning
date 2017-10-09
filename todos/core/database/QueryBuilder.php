@@ -48,6 +48,7 @@ class Query
         $statement->bindParam(':email', $email);
         $statement->bindParam(':password', $password);
         $statement->execute();
+        // $statement->debugDumpParams();
     }
     public function addTask($table, $description, $completed, $userid)
     {
