@@ -27,9 +27,20 @@ class Learn
         return $this->getProperty();
     }
 }
+
+class ExtraLearning extends Learn {
+    public function __construct(){
+        echo 'This is from  ' . __CLASS__;
+    }
+    public function extraMethod(){
+        parent::__construct();
+        echo 'This is a method from '. __CLASS__ . '.';
+    }
+}
 $learning = new Learn;
 $learning2 = new Learn;
-
+$learning3 = new ExtraLearning;
+$learning3->extraMethod();
 echo "\n\r";
 // unset($learning);
 echo $learning->getProperty();

@@ -29,3 +29,4 @@ $weather = 'breezy';
 
 $greeting = sprintf('Good %s %s! How are you this %s? It is %s outside!', $timeOfDay, $name, $timeOfDay, $weather);
 echo $greeting;
+.

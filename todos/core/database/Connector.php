@@ -5,7 +5,7 @@ class Connector
     public static function connect($dbConfig)
     {
         try {
-            return new PDO($dbConfig['host']. $dbConfig['dbName'], 
+            return new PDO($dbConfig['host']. $dbConfig['port']. $dbConfig['dbName'], 
             $dbConfig['name'],
              $dbConfig['password'],
              $dbConfig['options']);
